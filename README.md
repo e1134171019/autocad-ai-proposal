@@ -1,5 +1,3 @@
-Wall time: 0.3 seconds
-Output:
 # AutoCAD × AI 智能作業提案網站
 
 以 Svelte 5、D3 與 Vite 建立的單頁客戶提案。v2.8.4 依 AGENTS v5.9.3 整合人工逐段標註、標準圖層、外部轉角逐段尺寸、多深井游標動畫、整層框選、AI RESULTS 與 AI 助理問答。

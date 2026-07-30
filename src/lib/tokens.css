@@ -1,0 +1,138 @@
+/* 職責：定義 v5.9.3 Light-first、淺灰 CAD 模型空間、中階工程線型、AI-DIM 與 0.5× 播放 Token。 */
+/* 輸入：全站元件與 D3 圖表的 var() 引用。 */
+/* 輸出：暖米白提案介面、深色 CAD 框架、淺灰模型空間與一致互動基準。 */
+:root {
+  --background: #fafaf8;
+  --bg-surface: #ffffff;
+  --bg-overlay: #f1f0ed;
+  --bg-subtle: #f8f7f4;
+  --foreground: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #94a3b8;
+  --text-disabled: #cbd5e1;
+  --primary: #2563eb;
+  --primary-hover: #1d4ed8;
+  --primary-subtle: #eff6ff;
+  --primary-foreground: #ffffff;
+  --technical: #0d9488;
+  --technical-subtle: #f0fdfa;
+  --success: #15803d;
+  --warning: #b45309;
+  --danger: #dc2626;
+  --keyword-ai: #2457e6;
+  --keyword-standard: #16803c;
+  --keyword-manual: #b45309;
+  --border: #e2e8f0;
+  --border-strong: #cbd5e1;
+
+  /* CAD 框架維持深色；模型空間刻意使用淺灰，優先確保提案投影與區域辨識。 */
+  --cad-chrome-background: #1c2229;
+  --cad-toolbar-background: #303844;
+  --cad-panel-background: #252b32;
+  --cad-command-background: #191e24;
+  --cad-foreground: #f2f4f7;
+  --cad-secondary: #aab4c0;
+  --cad-border: #3a444f;
+  --cad-canvas-background: #e7e8e5;
+  --cad-canvas-grid: #d3d6d2;
+
+  /* 建築底圖採低彩度中性色；CAD 辨識感由線型與 Hatch 建立，而非高密度彩色圖層。 */
+  --cad-building-primary: #66717b;
+  --cad-building-secondary: #9ba3aa;
+  --cad-layer-wall: #66717b;
+  --cad-layer-equipment: #7c858d;
+  --cad-layer-reference: #929aa1;
+  --cad-layer-opening: #7c858d;
+  --cad-layer-support: #7c858d;
+  --cad-layer-brace: #ffffff;
+  --cad-layer-component: #7c858d;
+
+  /* 本次計算與輸出角色。 */
+  --cad-layer-exterior: #3d7a3a;
+  --cad-layer-shaft: #c65d21;
+  --cad-layer-dimension: #d62828;
+  --cad-layer-ignored: #929aa1;
+
+  /* 操作狀態不覆蓋原始 ByLayer 顏色。 */
+  --cad-selection: #c88b17;
+  --cad-selection-fill: rgb(200 139 23 / 10%);
+  --cad-hover: #0f6e91;
+  --cad-grip: #0891b2;
+  --cad-error: #dc2626;
+
+  --cad-result-background: #20252b;
+  --cad-result-foreground: #f8fafc;
+  --cad-result-secondary: #cbd5e1;
+  --cad-result-value: #bfdbfe;
+
+  --content-standard-max-width: 1200px;
+  --content-wide-max-width: 1680px;
+  --content-side-padding: 32px;
+  --cad-toolbar-height: 32px;
+  --cad-ribbon-height: 92px;
+  --cad-command-height: 24px;
+  --cad-property-width: 286px;
+  --cad-min-width-desktop: 860px;
+  --cad-min-width-tablet: 720px;
+  --cad-min-height-desktop: 700px;
+  --cad-min-height-tablet: 580px;
+  --cad-cursor-size: 18px;
+  --cad-grip-size: 6px;
+  --cad-font-size-command: 11px;
+  --cad-font-size-label: 11px;
+  --cad-font-size-value: 12px;
+  --cad-font-size-dimension: 10px;
+
+  --cad-line-width-building: 1px;
+  --cad-line-width-hidden: 0.8px;
+  --cad-line-width-center: 0.8px;
+  --cad-line-width-dimension: 1.2px;
+  --cad-line-width-outline: 1px;
+  --cad-line-width-construction: 1.5px;
+  --cad-line-width-selected: 2px;
+  --cad-linetype-hidden: 3 3;
+  --cad-linetype-center: 8 3 2 3;
+  --cad-hatch-spacing: 7px;
+
+  --font-display: 'JetBrains Mono', monospace;
+  --font-body: 'Inter', sans-serif;
+  --space-1: 8px;
+  --space-2: 16px;
+  --space-3: 24px;
+  --space-4: 32px;
+  --space-5: 48px;
+  --space-6: 64px;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --duration-instant: 0ms;
+  --duration-fast: 150ms;
+  --duration-normal: 250ms;
+  --duration-slow: 400ms;
+  --cad-playback-rate: 0.5;
+  --duration-cad-cell: 90ms;
+  --duration-cad-draw: 850ms;
+  --duration-cad-panel: 500ms;
+  --duration-cad-adjust: 700ms;
+  --duration-cad-cursor-move: 600ms;
+  --duration-cad-selection-drag: 900ms;
+  --duration-cad-selection-feedback: 350ms;
+  --duration-cad-manual-label: 5200ms;
+  --duration-cad-matrix-scan: 420ms;
+  --duration-cad-matrix-cell: 520ms;
+  --duration-cad-label-reveal: 480ms;
+  --duration-cad-click-feedback: 180ms;
+  --duration-ai-panel: var(--duration-normal);
+  --ease-linear: linear;
+  --ease-out: cubic-bezier(0, 0, .5, 1);
+  --ease-in-out: cubic-bezier(.5, 0, .5, 1);
+  --ease-spring: cubic-bezier(.5, 1, .75, 1.25);
+  --bp-sm: 480px;
+  --bp-md: 768px;
+  --bp-lg: 1024px;
+  --bp-cad-stack: 1200px;
+  --bp-xl: 1280px;
+  --bp-wide: 1440px;
+  --nav-height: 64px;
+  --line-thin: 1px;
+}
