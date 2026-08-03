@@ -8,7 +8,7 @@
 
 <section id="act-04" class="section solution">
   <div class="section-inner-wide">
-    <CadProcess eyebrow="ACT 04 / AI WORKFLOW" title="把人工標註，變成標準圖層驅動的 AI 自動作業" titleHighlights={[{ text: '標準圖層', tone: 'standard' }, { text: 'AI 自動作業', tone: 'ai' }]} lead="我們把畫線、圖層、標註、框選、分類、加總與查詢整合在 AutoCAD 原生介面中。" leadHighlights={[{ text: '整合', tone: 'ai' }]} processSteps={futureFlowSteps} mode="future" />
+    <CadProcess eyebrow="ACT 04 / PROPOSED AI WORKFLOW" title="我們提出的 AutoCAD AI 作業方案，實際如何運作？" titleHighlights={[{ text: 'AutoCAD AI 作業方案', tone: 'ai' }]} lead="我們把畫線、圖層、標註、框選、分類、加總與查詢整合在 AutoCAD 原生介面中。" leadHighlights={[{ text: '整合', tone: 'ai' }]} processSteps={futureFlowSteps} mode="future" />
   </div>
 </section>
 
