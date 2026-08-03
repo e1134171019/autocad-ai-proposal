@@ -1,6 +1,6 @@
 <!-- 職責：以四段人話敘事建立客戶需求、目標、難點與現況入口。 -->
 <!-- 輸入：heroContent 提案文案。 -->
-<!-- 輸出：ACT 01 閱讀段落、六章快速目錄與 ACT 02 銜接。 -->
+<!-- 輸出：ACT 01 六章快速目錄、閱讀段落與 ACT 02 銜接。 -->
 <script>
   import { heroContent } from '$lib/content/siteContent.js';
 
@@ -46,11 +46,6 @@
 
 <section id="act-01" class="section hero">
   <div class="section-inner">
-    <p class="eyebrow">ACT 01 / PROJECT CONTEXT</p>
-    <h1>客戶需求、目標、難點與現況入口</h1>
-    <p class="lead">{heroContent.lead}</p>
-    <div class="context-line"><span class="status-dot"></span>先說清楚客戶要什麼，再走進目前的 CAD 作業</div>
-
     <nav class="proposal-outline" aria-label="提案內容快速導覽">
       <h2 class="outline-heading">這份提案會說明六件事</h2>
       <div class="outline-grid">
@@ -63,6 +58,12 @@
         {/each}
       </div>
     </nav>
+
+    <div class="hero-intro">
+      <p class="eyebrow">ACT 01 / PROJECT CONTEXT</p>
+      <h1>客戶需求、目標、難點與現況入口</h1>
+      <div class="context-line"><span class="status-dot"></span>先說清楚客戶要什麼，再走進目前的 CAD 作業</div>
+    </div>
 
     <div class="narrative">
       {#each heroContent.sections as narrativeSection}
@@ -81,10 +82,7 @@
 
 <style>
   .hero { padding-top: calc(var(--nav-height) + 11vh); background: var(--bg-surface); }
-  h1 { max-width: 1040px; margin: 0; color: var(--foreground); font: 600 clamp(2.8rem, 7.5vw, 7rem)/.98 var(--font-display); letter-spacing: -.065em; }
-  .lead { max-width: 830px; margin: var(--space-4) 0 0; color: var(--text-secondary); font-size: clamp(1.05rem, 1.8vw, 1.35rem); }
-  .context-line { margin-top: var(--space-5); padding-left: var(--space-2); border-left: 2px solid var(--technical); color: var(--technical); font: 600 .78rem/1.4 var(--font-display); }
-  .proposal-outline { margin-top: var(--space-6); }
+  .proposal-outline { margin-top: 0; }
   .outline-heading { margin: 0 0 var(--space-3); color: var(--foreground); font: 600 clamp(1.4rem, 2.2vw, 2rem)/1.2 var(--font-display); }
   .outline-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: var(--line-thin) solid var(--border-strong); border-left: var(--line-thin) solid var(--border-strong); }
   .outline-item { min-height: 168px; padding: var(--space-3); border-right: var(--line-thin) solid var(--border-strong); border-bottom: var(--line-thin) solid var(--border-strong); color: var(--foreground); background: var(--bg-surface); transition: background var(--duration-fast) var(--ease-out), color var(--duration-fast) var(--ease-out); }
@@ -93,6 +91,9 @@
   .outline-index { display: block; margin-bottom: var(--space-2); color: var(--primary); font: 600 .72rem/1 var(--font-display); letter-spacing: .08em; }
   .outline-item h3 { margin: 0; color: var(--foreground); font: 600 1.05rem/1.4 var(--font-display); }
   .outline-desc { margin: var(--space-1) 0 0; color: var(--text-secondary); line-height: 1.65; }
+  .hero-intro { margin-top: var(--space-6); }
+  h1 { max-width: 1040px; margin: 0; color: var(--foreground); font: 600 clamp(2.8rem, 7.5vw, 7rem)/.98 var(--font-display); letter-spacing: -.065em; }
+  .context-line { margin-top: var(--space-4); padding-left: var(--space-2); border-left: 2px solid var(--technical); color: var(--technical); font: 600 .78rem/1.4 var(--font-display); }
   .narrative { margin-top: var(--space-6); border-top: var(--line-thin) solid var(--border-strong); }
   article { display: grid; grid-template-columns: 80px minmax(0, 1fr); gap: var(--space-3); padding: var(--space-5) 0; border-bottom: var(--line-thin) solid var(--border); }
   .copy { display: grid; grid-template-columns: minmax(180px, 280px) minmax(0, 1fr); gap: var(--space-4); }
