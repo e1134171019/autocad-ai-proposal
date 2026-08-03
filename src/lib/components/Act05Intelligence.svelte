@@ -13,8 +13,8 @@
 
 <section id="act-05" class="section intelligence">
   <div class="section-inner">
-    <p class="eyebrow">ACT 05 / AI INTELLIGENCE</p>
-    <h2 class="section-title">AI 如何知道<span class="keyword-ai">這次要算什麼</span>？</h2>
+    <p class="eyebrow">ACT 05 / AI DECISION LOGIC</p>
+    <h2 class="section-title">說明 <span class="keyword-ai">AI</span> 如何依圖面條件與規則判斷</h2>
     <p class="section-lead">AI 依照<span class="keyword-standard">圖面身分、框選範圍與標準圖層</span>判斷有效物件，再<span class="keyword-ai">取得、分類、換算與解釋</span>結果。沒有框選時，AI 助理不會回答。</p>
     <div class="intelligence-layout">
       <div class="chart" bind:this={chartContainer}></div>
