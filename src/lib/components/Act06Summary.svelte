@@ -4,11 +4,7 @@
 <section id="act-06" class="section summary">
   <div class="section-inner">
     <p class="eyebrow">ACT 06 / PROJECT SUMMARY</p>
-    <h2 class="section-title">
-      從<span class="keyword-manual">工程經驗</span>，走向可持續改善的
-      <span class="keyword-ai">AI</span>
-      <span class="keyword-standard">標準作業系統</span>
-    </h2>
+    <h2 class="section-title">工程經驗規則化與專案總結</h2>
 
     <div class="summary-copy">
       <p>
