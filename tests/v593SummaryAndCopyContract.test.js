@@ -22,11 +22,18 @@ describe('v5.9.3 專案總結與 ACT 04 文案契約', () => {
     ]));
   });
 
-  it('STEP 03～06 不把 AI 描述成代替繪圖人員', () => {
-    const copy = futureFlowSteps.slice(2, 6).map((step) => `${step.label} ${step.desc}`).join(' ');
-    expect(copy).toContain('繪圖人員確認施工位置');
-    expect(copy).toContain('繪圖人員逐段完成');
-    expect(copy).not.toContain('避免手動切換圖層與性質');
+  it('STEP 03～06 保留繪圖人員判斷與操作責任', () => {
+    const step03 = futureFlowSteps[2];
+    const step04 = futureFlowSteps[3];
+    const step05 = futureFlowSteps[4];
+    const step06 = futureFlowSteps[5];
+
+    expect(`${step03.label} ${step03.desc}`).toContain('繪圖人員');
+    expect(`${step03.label} ${step03.desc}`).toContain('判斷施工位置');
+    expect(step04.desc).toContain('逐段繪製');
+    expect(step04.desc).toContain('AI 不代替繪圖');
+    expect(`${step05.label} ${step05.desc}`).toContain('不用手動切換圖層');
+    expect(`${step06.label} ${step06.desc}`).toContain('外掛');
   });
 
   it('ACT 06 使用專案總結並完全移除舊 NEXT STEP CTA', () => {
