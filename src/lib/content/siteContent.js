@@ -57,7 +57,6 @@ const SELECTION_CONTEXT = Object.freeze({
 });
 
 export const futureExteriorSegments = FUTURE_EXTERIOR_SEGMENTS;
-
 export const manualExteriorSegments = Object.freeze([
   Object.freeze({ id: '外部01', lengthCm: 100 }),
   Object.freeze({ id: '外部02', lengthCm: 80 }),
@@ -116,10 +115,10 @@ export const heroContent = Object.freeze({
 
 export const currentFlowNodes = Object.freeze([
   { id: 1, label: '建商提供原始 CAD 圖面', desc: '建商提供平面圖、立面圖與剖面圖，繪圖人員先確認本次要處理的樓層與圖面版本。', animType: 'static' },
-  { id: 2, label: '繪圖人員依施工需求拆圖', desc: '依施工需求整理各樓層工作圖，確認每張圖面所對應的施工範圍與樓層資訊。', animType: 'static-sheets', highlights: [{ text: '拆圖', tone: 'manual' }] },
+  { id: 2, label: '導入建商圖面與原始圖層', desc: '將建商提供的 CAD 圖面導入工作檔，保留原本的樓層與圖層資料，作為後續判斷施工範圍與繪製施工線的底圖。', animType: 'static-sheets', highlights: [{ text: '建商圖面', tone: 'manual' }, { text: '原始圖層', tone: 'manual' }] },
   { id: 3, label: '判斷外部與深井的施工範圍', desc: '人工判斷建築外部與內部深井的位置，作為後續繪製與標註的依據。', animType: 'static-zones', highlights: [{ text: '人工判斷', tone: 'manual' }] },
-  { id: 4, label: '沿施工範圍繪製分段聚合線', desc: '外部施工線可能由多段獨立聚合線組成；內部深井則以矩形聚合線表示。', animType: 'draw', highlights: [{ text: '分段聚合線', tone: 'manual' }] },
-  { id: 5, label: '逐段點選線段並查看 Properties', desc: '箭頭游標逐一點選外部線段與深井，人工從 Properties 讀取每一段長度，不進行整層框選。', animType: 'manual-inspect', highlights: [{ text: '逐段點選', tone: 'manual' }, { text: '人工', tone: 'manual' }] },
+  { id: 4, label: '沿施工範圍繪製線段或聚合線', desc: '繪圖人員依照圖面與繪圖方式，選擇使用線段或聚合線繪製施工範圍。外部與內部深井可能由單一或多段線組成，線段之間也不一定接合。', animType: 'draw', highlights: [{ text: '線段或聚合線', tone: 'manual' }, { text: '不一定接合', tone: 'manual' }] },
+  { id: 5, label: '目前查看尺寸的方法', desc: '繪圖人員需要逐段點選線段或聚合線，再從性質面板查看每一段長度。施工線越多，人工點選、記錄與加總的時間就越長，也可能發生漏點、重複計算或漏算。', animType: 'manual-inspect', highlights: [{ text: '逐段點選', tone: 'manual' }, { text: '性質面板', tone: 'manual' }, { text: '漏點、重複計算或漏算', tone: 'manual' }] },
   { id: 6, label: '點擊標註工具，逐段建立水平紅色尺寸', desc: '每次先點選線段，再點擊尺寸標註按鈕，建立水平尺寸線與左右箭頭並輸入文字。右側人工記錄會隨每一筆完成逐個增加，模型空間下方不放加總公式。', animType: 'manual-label-slow', highlights: [{ text: '逐段建立', tone: 'manual' }, { text: '人工記錄', tone: 'manual' }] },
   { id: 7, label: '人工加總外部與內部深井長度', desc: '外部以 100＋80＋30＋40＋60 逐段加總；內部深井以 100＋100＋100＋100 逐個加總。', animType: 'sum', highlights: [{ text: '人工加總', tone: 'manual' }] },
   { id: 8, label: '依長度人工換算施工數量', desc: '依公司施工條件人工換算外部三角補強等構件數量，並再次確認圖面與計算結果。', animType: 'quantity-slow', highlights: [{ text: '人工換算', tone: 'manual' }] },
