@@ -17,9 +17,13 @@ describe('v5.9 CAD 圖面層次', () => {
     ['--cad-linetype-hidden:', '--cad-linetype-center:', '--cad-hatch-spacing:'].forEach((token) => expect(tokens).toContain(token));
     ["data-linetype', 'solid", "data-linetype', 'hidden", "data-linetype', 'center", "data-linetype', 'hatch", "patternTransform', 'rotate(45)"].forEach((phrase) => expect(chart).toContain(phrase));
   });
-  it('STEP 07 一次框選整層，再由標準圖層過濾', () => {
+  it('STEP 07 以框選界定整層施工範圍，再由標準圖層過濾', () => {
     const selectionStep = futureFlowSteps.find((step) => step.animType === 'box-select-fast');
-    expect(selectionStep.label).toContain('樓層範圍');
+    const selectionCopy = `${selectionStep.label} ${selectionStep.desc}`;
+
+    expect(selectionCopy).toContain('框選');
+    expect(selectionCopy).toContain('施工範圍');
+    expect(selectionCopy).toContain('標準圖層');
     expect(selectionStep.selection.boundaryType).toBe('floor');
     expect(selectionStep.selection.area).toContain('整層');
     expect(selectionStep.selection.objectIds).toHaveLength(52);
@@ -37,4 +41,3 @@ describe('v5.9 CAD 圖面層次', () => {
     expect(shaftMatrixItems.every((item) => item.drawingUnit === 'm')).toBe(true);
   });
 });
-
