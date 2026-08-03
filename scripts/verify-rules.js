@@ -53,7 +53,7 @@ if (!guidedStep.highlights.some((item) => item.text === '自動讀取物件長�
 if (!guidedStep.highlights.some((item) => item.text === '標準圖層' && item.tone === 'standard')) violations.push('ACT 04 STEP 04: 標準圖層未套用標準色');
 ['ACT 06 / PROJECT SUMMARY', '規則化、標準化與系統化', '把繪圖人員的工程經驗，轉成公司可以保存、團隊可以沿用、程式可以執行、AI 可以使用的標準作業系統。'].forEach((phrase) => { if (!summary.includes(phrase)) violations.push(`Act06Summary.svelte: 缺少 ${phrase}`); });
 ['NEXT STEP', '準備好從一張代表性施工圖開始了嗎？', '重新檢視現況流程'].forEach((phrase) => { if (summary.includes(phrase)) violations.push(`Act06Summary.svelte: 仍含舊 CTA ${phrase}`); });
-if (!nav.includes("'總結'")) violations.push('Nav.svelte: 第六章未改為總結');
+if (!nav.includes("'專案總結'")) violations.push('Nav.svelte: 第六章未改為專案總結');
 if (!svelteConfig.includes("process.env.GITHUB_REPOSITORY?.split('/')[1]") || !svelteConfig.includes('base: githubPagesBase')) violations.push('svelte.config.js: GitHub Pages base path 設定不完整');
 ['actions/checkout@v6', 'actions/setup-node@v6', 'actions/configure-pages@v5', 'actions/upload-pages-artifact@v4', 'actions/deploy-pages@v4', 'path: build'].forEach((phrase) => { if (!pagesWorkflow.includes(phrase)) violations.push(`deploy-pages.yml: 缺少 ${phrase}`); });
 if (read('src/lib/components/Act01Hero.svelte').includes('keyword-ai') || read('src/lib/components/Act03Problem.svelte').includes('keyword-ai')) violations.push('ACT 01/03 不應套用關鍵字色');
