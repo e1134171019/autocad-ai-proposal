@@ -10,7 +10,7 @@
   <div class="section-inner-wide">
     <CadProcess
       eyebrow="ACT 02 / CURRENT MANUAL WORKFLOW"
-      title="互動呈現目前人工工作流程"
+      title="目前貴司工作流程"
       lead="接下來，我們跟著目前的人工工作方式走一次：逐段點選、逐段標註、逐筆記錄，再人工加總與換算數量。"
       leadHighlights={[{ text: '人工工作方式', tone: 'manual' }, { text: '逐段標註', tone: 'manual' }, { text: '人工加總', tone: 'manual' }]}
       processSteps={currentFlowNodes}
