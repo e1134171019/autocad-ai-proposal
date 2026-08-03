@@ -8,7 +8,7 @@
 
 <section id="act-04" class="section solution">
   <div class="section-inner-wide">
-    <CadProcess eyebrow="ACT 04 / PROPOSED AI WORKFLOW" title="我們提出的 AutoCAD AI 作業方案，實際如何運作？" titleHighlights={[{ text: 'AutoCAD AI 作業方案', tone: 'ai' }]} lead="我們把畫線、圖層、標註、框選、分類、加總與查詢整合在 AutoCAD 原生介面中。" leadHighlights={[{ text: '整合', tone: 'ai' }]} processSteps={futureFlowSteps} mode="future" />
+    <CadProcess eyebrow="ACT 04 / PROPOSED SYSTEM" title="互動呈現本團隊提出的系統方案" titleHighlights={[{ text: '本團隊提出的系統方案', tone: 'ai' }]} lead="我們把畫線、圖層、標註、框選、分類、加總與查詢整合在 AutoCAD 原生介面中。" leadHighlights={[{ text: '整合', tone: 'ai' }]} processSteps={futureFlowSteps} mode="future" />
   </div>
 </section>
 
