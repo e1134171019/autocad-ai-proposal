@@ -20,8 +20,8 @@
 
 <section id="act-03" class="section problem" bind:this={sectionElement}>
   <div class="section-inner">
-    <p class="eyebrow">ACT 03 / FAILURE POINTS</p>
-    <h2 class="section-title">人工作業，在哪裡出問題？</h2>
+    <p class="eyebrow">ACT 03 / TIME VARIANCE</p>
+    <h2 class="section-title">人工處理時間，為什麼每次都不一樣？</h2>
     <p class="section-lead">耗時的不是查看單一長度，而是抄寫、整理、加總、換算，以及每次圖面修改後的重新確認。</p>
     <div class="chart" bind:this={chartContainer}></div>
     <ol class:visible={isVisible}>
