@@ -21,7 +21,7 @@
 <section id="act-03" class="section problem" bind:this={sectionElement}>
   <div class="section-inner">
     <p class="eyebrow">ACT 03 / TIME VARIANCE</p>
-    <h2 class="section-title">說明人工工時變異與 AI 平均工時穩定化</h2>
+    <h2 class="section-title">人工工時不一與 AI 平均工時</h2>
     <p class="section-lead">耗時的不是查看單一長度，而是抄寫、整理、加總、換算，以及每次圖面修改後的重新確認。</p>
     <div class="chart" bind:this={chartContainer}></div>
     <ol class:visible={isVisible}>
