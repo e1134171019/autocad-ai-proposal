@@ -4,7 +4,7 @@
 <script>
   import { onMount } from 'svelte';
   import { activeAct } from '$lib/stores/appState.js';
-  const navItems = ['需求', '現況', '問題', '解法', 'AI', '總結'];
+  const navItems = ['需求與目標', '人工流程', '工時變異', '系統方案', '判斷規則', '專案總結'];
   onMount(() => {
     const sections = document.querySelectorAll('section[id^="act-"]');
     const observer = new IntersectionObserver((entries) => {
