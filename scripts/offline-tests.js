@@ -73,7 +73,7 @@ assert.ok(summary.includes('規則化、標準化與系統化'));
 assert.ok(summary.includes('把繪圖人員的工程經驗，轉成公司可以保存、團隊可以沿用、程式可以執行、AI 可以使用的標準作業系統。'));
 assert.ok(!summary.includes('NEXT STEP'));
 assert.ok(!summary.includes('重新檢視現況流程'));
-assert.ok(nav.includes("'總結'"));
+assert.ok(nav.includes("'專案總結'"));
 assert.ok(svelteConfig.includes("process.env.GITHUB_REPOSITORY?.split('/')[1]"));
 assert.ok(svelteConfig.includes('base: githubPagesBase'));
 assert.ok(pagesWorkflow.includes('actions/configure-pages@v5'));
