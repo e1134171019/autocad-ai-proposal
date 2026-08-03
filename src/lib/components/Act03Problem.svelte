@@ -1,4 +1,4 @@
-<!-- 職責：對比人工整理與系統整理的風險差異。 -->
+<!-- 職責：對比人工整理與系統整理的工時差異。 -->
 <!-- 輸入：risks 與 comparisonAnim。 -->
 <!-- 輸出：ACT 03 動畫比較與六項風險。 -->
 <script>
@@ -22,7 +22,7 @@
   <div class="section-inner">
     <p class="eyebrow">ACT 03 / TIME VARIANCE</p>
     <h2 class="section-title">人工工時不一與 AI 平均工時</h2>
-    <p class="section-lead">耗時的不是查看單一長度，而是抄寫、整理、加總、換算，以及每次圖面修改後的重新確認。</p>
+    <p class="section-lead">這裡比較的是整體作業時間：人工流程會因圖面內容與操作方式不同而產生明顯差異；導入 AI 工具後，處理速度更快，每次作業所需時間也更穩定、更接近平均值。</p>
     <div class="chart" bind:this={chartContainer}></div>
     <ol class:visible={isVisible}>
       {#each risks as risk, index}
