@@ -16,16 +16,20 @@
    - 只提供判斷與改寫方法，不執行程式掃描。
 2. `src/lib/content/copyGate.js`
    - 純函式 deterministic audit。
-   - 只標示可機械判斷的問題：AI/官腔短語、空轉導讀、過長句、成效 claim 缺 evidence、台灣常見禁用詞。
-   - 不自動重寫。
-3. `tests/fixtures/copyGateCases.js`
-   - 20 個固定案例：8 preserve、8 rewrite、4 claim/evidence。
-4. `tests/copyGate.test.js`
-   - 驗證低誤殺、問題命中與 claim gate。
-5. `scripts/audit-copy.js`
+   - 只標示適合機械判斷的問題：空轉導讀、模糊開場、弱動詞、AI／商業黑話、繁中用語與成效 claim 缺 evidence。
+   - 不自動重寫；長句與段落密度由語意層 Skill 判斷，避免機械字數門檻誤殺技術內容。
+3. `src/lib/content/copySourceExtractor.js`
+   - JS 取得中文字串；Svelte 另外取得畫面可見正文。
+   - 排除 `<script>`／`<style>` 畫面外內容與 Svelte expression，避免只掃 JS 字串而漏掉 ACT 正文。
+4. `tests/fixtures/copyGateCases.js`
+   - 21 個語意案例：9 preserve、8 rewrite、4 claim/evidence。
+   - preserve 包含實際 audit 發現的「接下來」語境誤殺回歸案例。
+5. `tests/copyGate.test.js`、`tests/copySourceExtractor.test.js`
+   - 驗證低誤殺、問題命中、claim gate 與 Svelte 正文擷取。
+6. `scripts/audit-copy.js`
    - 掃描目前 `siteContent.js` 與 ACT 03/05/06；輸出 finding，不阻斷 v0.1。
-6. `.github/workflows/quality-gate.yml`
-   - feature branch / PR 執行既有 tests、rules、Svelte check、build 與 Copy Gate tests。
+7. `.github/workflows/quality-gate.yml`
+   - feature branch / PR 執行既有 tests、rules、Svelte check、全部 Vitest、Copy Gate audit 與 build。
 
 ## 規則優先序
 1. Fidelity：不得改變事實、數字、版本、圖層、工程責任。
@@ -41,8 +45,9 @@
 - strict：等 ACT 文案清理完成後另行啟用；不得在本次偷偷切換。
 
 ## 成功條件
-- 20/20 benchmark 通過。
-- 8 個 preserve 案不得被誤報。
+- 21/21 語意 benchmark 符合預期；Copy Gate 測試同時驗證 4 個有 evidence 的反例。
+- 9 個 preserve 案不得被誤報。
 - 8 個 rewrite 案至少命中預期問題族。
 - 4 個 unsupported claim 全部命中 `claim-evidence`。
+- Svelte 畫面正文能進入 audit，ACT 03 的無證據工時 claim 必須被掃到。
 - 原有 Vitest、offline tests、rules、Svelte check、build 不退步。
