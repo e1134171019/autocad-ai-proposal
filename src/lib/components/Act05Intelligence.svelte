@@ -30,8 +30,7 @@
 
 <style>
   .intelligence { background: var(--bg-overlay); }
-  .keyword-ai { color: var(--keyword-ai); font-weight: 700; }
-  .keyword-standard { color: var(--keyword-standard); font-weight: 700; }
+  .keyword-ai, .keyword-standard { font-weight: 700; }
   .intelligence-layout { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(300px, .85fr); gap: var(--space-6); margin-top: var(--space-6); }
   .chart { min-height: 520px; border: var(--line-thin) solid var(--border-strong); background: var(--technical-subtle); }
   .label { margin: 0; color: var(--technical); font-size: .75rem; }
@@ -39,7 +38,7 @@
   li { display: flex; gap: var(--space-3); padding: var(--space-2) 0; border-bottom: var(--line-thin) solid var(--border); color: var(--foreground); }
   li span { color: var(--text-muted); font: 600 .72rem/1.7 var(--font-display); }
   li strong { color: inherit; font-weight: 400; }
-  li strong.keyword-ai { color: var(--keyword-ai); font-weight: 700; }
+  li strong.keyword-ai { font-weight: 700; }
   .verification { margin-top: var(--space-4); padding: var(--space-3); border: var(--line-thin) solid var(--technical); background: var(--technical-subtle); }
   .verification strong { color: var(--technical); font: 600 .85rem/1.4 var(--font-display); }
   .verification p { margin: var(--space-1) 0 0; color: var(--text-secondary); }
