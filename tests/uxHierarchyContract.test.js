@@ -7,6 +7,7 @@ const read = (path) => readFileSync(resolve(process.cwd(), path), 'utf8');
 
 const HERO_PATH = 'src/lib/components/Act01Hero.svelte';
 const PROCESS_PATH = 'src/lib/components/CadProcess.svelte';
+const NAV_PATH = 'src/lib/components/Nav.svelte';
 const TOKENS_PATH = 'src/lib/tokens.css';
 
 describe('UX hierarchy v2 client comprehension contract', () => {
@@ -28,12 +29,15 @@ describe('UX hierarchy v2 client comprehension contract', () => {
     expect(hero).toContain('繪圖 → 框選施工範圍 → 系統整理長度與數量 → 人員確認');
   });
 
-  it('ACT 01 導覽不再使用舊的工時成效宣稱', () => {
+  it('ACT 01 與固定導覽都不再使用舊的工時成效語意', () => {
     const hero = read(HERO_PATH);
+    const nav = read(NAV_PATH);
 
     expect(hero).not.toMatch(/工時差異|AI 工具處理更快|時間更穩定/);
     expect(hero).toContain('流程差異');
     expect(hero).toContain('不代表實測工時');
+    expect(nav).not.toContain('工時變異');
+    expect(nav).toContain('流程差異');
   });
 
   it('一般敘事不再用 AI 藍、標準綠、人工橘做文字分類', () => {
