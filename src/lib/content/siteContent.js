@@ -107,7 +107,7 @@ export const heroContent = Object.freeze({
         '在開始做工具之前，我們要先看懂繪圖人員現在是怎麼完成一張施工圖的。',
         '圖面拿到後怎麼拆？施工範圍怎麼判斷？聚合線怎麼畫？每段長度怎麼查看？整張圖怎麼加總？元件數量又是怎麼整理和檢查的？',
         '只有把這些實際操作弄清楚，AI 才知道接下來要看哪張圖、計算哪些內容，以及怎麼整理結果。',
-        '接下來，我們就從原始 CAD 圖面開始，走一次目前的完整流程。'
+        '目前的作業流程從原始 CAD 圖面開始。'
       ]
     }
   ]
@@ -131,8 +131,8 @@ export const futureFlowSteps = Object.freeze([
   { id: 3, label: '繪圖人員判斷施工位置', desc: '繪圖人員依照建商圖面與施工需求，判斷外部與深井哪些位置需要施工，作為後續繪製施工線的依據。', animType: 'static-zones', highlights: [{ text: '繪圖人員', tone: 'manual' }, { text: '判斷施工位置', tone: 'manual' }] },
   { id: 4, label: '使用外掛工具列繪製施工範圍', desc: '位置確認後，外部施工線與深井仍由繪圖人員依工程判斷逐段繪製，AI 不代替繪圖。每完成一段外部線或一個深井，系統才會自動讀取物件長度並帶入尺寸標註，再依照標準圖層整理後續計算結果。', animType: 'guided-draw', highlights: [{ text: '逐段繪製', tone: 'manual' }, { text: '外部施工線與深井仍由繪圖人員依工程判斷逐段繪製', tone: 'manual' }, { text: 'AI 不代替繪圖', tone: 'emphasis' }, { text: '自動讀取物件長度並帶入尺寸標註', tone: 'ai' }, { text: '標準圖層', tone: 'standard' }] },
   { id: 5, label: '不用手動切換圖層，選擇工具就能直接繪製', desc: '原本繪圖前需要先選擇正確圖層，再使用線段或聚合線繪製。導入外掛後，繪圖人員只要從工具列選擇外部線或深井工具，系統就會自動帶入對應的標準圖層、顏色與線寬，不需要再另外切換圖層。', animType: 'auto-layer', highlights: [{ text: '不用手動切換圖層', tone: 'ai' }, { text: '自動帶入', tone: 'ai' }, { text: '標準圖層', tone: 'standard' }] },
-  { id: 6, label: '外掛在工具列新增專用功能按鈕', desc: '安裝外掛後，AutoCAD 工具列會新增外部線、深井、建立標註、更新標註與自動計算等功能按鈕。繪圖人員可以直接選擇需要的工具進行作業，不需要另外輸入指令或切換多個設定。', animType: 'auto-label', highlights: [{ text: '新增', tone: 'ai' }, { text: '功能按鈕', tone: 'standard' }, { text: '直接選擇', tone: 'manual' }] },
-  { id: 7, label: '我們特別針對框選功能做了設計', desc: '原生 AutoCAD 的框選，主要是一次選取範圍內的物件；我們則把框選設計成本次要計算的施工範圍。系統會依照前面建立的標準圖層，自動辨識施工線、深井與元件，再由 AI 進行分類、加總與結果整理。', animType: 'box-select-fast', selection: SELECTION_CONTEXT, highlights: [{ text: '框選', tone: 'ai' }, { text: '標準圖層', tone: 'standard' }, { text: 'AI', tone: 'ai' }] },
+  { id: 6, label: '外掛在工具列新增專用功能按鈕', desc: '安裝外掛後，AutoCAD 工具列會新增外部線、深井、建立標註、更新標註與自動計算等功能按鈕。繪圖人員可以直接選擇需要的工具，不需要另外輸入指令或切換多個設定。', animType: 'auto-label', highlights: [{ text: '新增', tone: 'ai' }, { text: '功能按鈕', tone: 'standard' }, { text: '直接選擇', tone: 'manual' }] },
+  { id: 7, label: '框選範圍定義本次計算區域', desc: '原生 AutoCAD 的框選主要是一次選取範圍內的物件；在外掛流程中，框選範圍同時作為本次計算邊界。系統依照標準圖層辨識施工線、深井與元件，分類後加總長度與數量，再整理結果。', animType: 'box-select-fast', selection: SELECTION_CONTEXT, highlights: [{ text: '框選', tone: 'ai' }, { text: '標準圖層', tone: 'standard' }, { text: 'AI', tone: 'ai' }] },
   { id: 8, label: '框選後才顯示分類結果', desc: '點擊自動計算後，繪圖人員框選本次施工範圍。放開滑鼠後，系統會依照標準圖層辨識並分類物件，並在右側新增的結果介面中，顯示有效長度物件、補強構件、忽略物件、外部合計、深井合計與施工總長，讓繪圖人員可以直接查看與確認。', animType: 'panel-fast', selection: SELECTION_CONTEXT, highlights: [{ text: '框選後', tone: 'ai' }, { text: '標準圖層', tone: 'standard' }, { text: '右側新增的結果介面', tone: 'ai' }] },
   { id: 9, label: '逐段編號，長度與元件分開整理', desc: '系統會將每一段施工線單獨列出並自動編號，繪圖人員可以隨時查看每一段的長度，並回到圖面找到對應位置。同時，系統也能分別識別長度物件與施工元件，整理各自的明細、數量與加總結果。所有辨識與計算，只會套用在外掛建立的標準圖層。', animType: 'result-three', highlights: [{ text: '自動編號', tone: 'ai' }, { text: '長度物件與施工元件', tone: 'standard' }, { text: '標準圖層', tone: 'standard' }] },
   { id: 10, label: '先框選，再由 AI 助理補字提問', desc: '步驟進入後先重新框選整層範圍；框選有效後，放大的輸入框會逐字輸入示範問題，再送出並取得可追溯結果。', animType: 'ai-query', selection: SELECTION_CONTEXT, highlights: [{ text: '先框選', tone: 'ai' }, { text: 'AI 助理', tone: 'ai' }, { text: '可追溯', tone: 'standard' }] },
@@ -176,8 +176,8 @@ export const aiResponsibilities = Object.freeze([
 ]);
 
 export const benefits = Object.freeze([
-  '降低人工計算及複核時間', '減少漏算、重算及混算風險', '統一不同人員的圖面判讀方式',
-  '加快圖面修改後的重新計算', '保留完整的計算依據', '建立後續擴充其他施工項目的基礎'
+  '人工計算與複核集中在同一套流程', '漏算、重算與混算交由規則檢查', '圖面判讀依標準圖層與框選規則執行',
+  '改圖後可重新執行分類與加總', '每筆結果保留計算依據', '規則可擴充至其他施工項目'
 ]);
 
 export const acceptanceCriteria = Object.freeze([
