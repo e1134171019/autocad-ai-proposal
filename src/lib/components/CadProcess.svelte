@@ -84,9 +84,7 @@
   h3 { max-width: 470px; margin: var(--space-4) 0 0; color: var(--foreground); font: 600 clamp(1.65rem, 3vw, 2.7rem)/1.18 var(--font-display); letter-spacing: -.035em; }
   .step-copy p { max-width: 480px; margin: var(--space-3) 0 0; color: var(--text-secondary); }
   .step-note { padding: var(--space-2); border-left: 3px solid var(--technical); background: var(--technical-subtle); }
-  .keyword-ai { color: var(--keyword-ai); font-weight: 700; }
-  .keyword-standard { color: var(--keyword-standard); font-weight: 700; }
-  .keyword-manual { color: var(--keyword-manual); font-weight: 700; }
+  .keyword-ai, .keyword-standard, .keyword-manual { font-weight: 700; }
   .keyword-emphasis { color: var(--foreground); font-weight: 700; }
   .step-controls { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-2); margin-top: var(--space-5); }
   .step-controls button { min-height: 50px; border: var(--line-thin) solid var(--border-strong); background: var(--bg-surface); cursor: pointer; }
