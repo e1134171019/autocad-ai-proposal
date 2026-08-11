@@ -11,7 +11,7 @@ describe('ACT 01 人話敘事', () => {
   it('使用 6 樓外部具體情境並銜接 ACT 02', () => {
     const content = heroContent.sections.flatMap((section) => section.paragraphs).join(' ');
     expect(content).toContain('6 樓外部施工範圍');
-    expect(content).toContain('走一次目前的完整流程');
+    expect(content).toContain('目前的作業流程從原始 CAD 圖面開始');
   });
   it('不含空泛展示文案', () => {
     const content = JSON.stringify(heroContent);

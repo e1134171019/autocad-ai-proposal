@@ -1,6 +1,6 @@
-<!-- 職責：對比人工整理與系統整理的工時差異。 -->
+<!-- 職責：對比現行人工流程與外掛流程的作業步驟差異。 -->
 <!-- 輸入：risks 與 comparisonAnim。 -->
-<!-- 輸出：ACT 03 動畫比較與六項風險。 -->
+<!-- 輸出：ACT 03 流程比較與六項風險。 -->
 <script>
   import { onMount } from 'svelte';
   import { risks } from '$lib/content/siteContent.js';
@@ -20,9 +20,9 @@
 
 <section id="act-03" class="section problem" bind:this={sectionElement}>
   <div class="section-inner">
-    <p class="eyebrow">ACT 03 / TIME VARIANCE</p>
-    <h2 class="section-title">人工工時不一與 AI 平均工時</h2>
-    <p class="section-lead">這裡比較的是整體作業時間：人工流程會因圖面內容與操作方式不同而產生明顯差異；導入 AI 工具後，處理速度更快，每次作業所需時間也更穩定、更接近平均值。</p>
+    <p class="eyebrow">ACT 03 / WORKFLOW COMPARISON</p>
+    <h2 class="section-title">現行人工流程與外掛流程差異</h2>
+    <p class="section-lead">這裡比較的是作業步驟，不代表實測工時。人工流程需要逐段查看、記錄、加總與複核；導入外掛後，系統依標準圖層取得、分類與整理結果。實際工時差異仍需用同一張圖面、相同條件量測後確認。</p>
     <div class="chart" bind:this={chartContainer}></div>
     <ol class:visible={isVisible}>
       {#each risks as risk, index}
