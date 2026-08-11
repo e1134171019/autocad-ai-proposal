@@ -26,5 +26,20 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Run Copy Gate regression tests
-        run: npm test -- tests/copyGate.test.js
+      - name: Run offline contract tests
+        run: npm run test:offline
+
+      - name: Verify project rules
+        run: npm run verify:rules
+
+      - name: Run Svelte check
+        run: npm run check
+
+      - name: Run Vitest
+        run: npm test
+
+      - name: Audit proposal copy
+        run: npm run audit:copy
+
+      - name: Build static site
+        run: npm run build
