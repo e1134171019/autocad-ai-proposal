@@ -6,7 +6,7 @@ const WARNING_RULES = Object.freeze([
   {
     rule: 'meta-intro',
     message: '刪除不增加資訊的導讀或轉場，直接進入內容。',
-    patterns: [/接下來[，,]?(?:我們)?(?:就)?/, /此外[，,]?/, /值得注意的是/, /總的來說/, /綜上所述/]
+    patterns: [/^接下來[，,]?(?:我們)?(?:就)?/, /^此外[，,]?/, /^值得注意的是/, /^總的來說/, /^綜上所述/]
   },
   {
     rule: 'vague-intro',
