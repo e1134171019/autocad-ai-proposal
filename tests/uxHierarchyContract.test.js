@@ -7,6 +7,8 @@ const read = (path) => readFileSync(resolve(process.cwd(), path), 'utf8');
 
 const HERO_PATH = 'src/lib/components/Act01Hero.svelte';
 const PROCESS_PATH = 'src/lib/components/CadProcess.svelte';
+const ACT05_PATH = 'src/lib/components/Act05Intelligence.svelte';
+const ACT06_PATH = 'src/lib/components/Act06Summary.svelte';
 const NAV_PATH = 'src/lib/components/Nav.svelte';
 const TOKENS_PATH = 'src/lib/tokens.css';
 
@@ -41,11 +43,15 @@ describe('UX hierarchy v2 client comprehension contract', () => {
   });
 
   it('一般敘事不再用 AI 藍、標準綠、人工橘做文字分類', () => {
-    const process = read(PROCESS_PATH);
+    const sources = [read(PROCESS_PATH), read(ACT05_PATH), read(ACT06_PATH)];
 
-    expect(process).not.toMatch(/\.keyword-ai\s*\{[^}]*color:/s);
-    expect(process).not.toMatch(/\.keyword-standard\s*\{[^}]*color:/s);
-    expect(process).not.toMatch(/\.keyword-manual\s*\{[^}]*color:/s);
+    for (const source of sources) {
+      expect(source).not.toMatch(/\.keyword-ai\s*\{[^}]*color:/s);
+      expect(source).not.toMatch(/\.keyword-standard\s*\{[^}]*color:/s);
+      expect(source).not.toMatch(/\.keyword-manual\s*\{[^}]*color:/s);
+    }
+
+    expect(read(ACT06_PATH)).not.toContain('border-top: 3px solid var(--keyword-standard)');
   });
 
   it('CAD ByLayer 與操作狀態色仍保留', () => {
