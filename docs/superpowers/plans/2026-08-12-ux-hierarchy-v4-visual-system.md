@@ -87,11 +87,11 @@ Preview Artifact v4 run `31556590902` succeeded.
 
 The managed Chromium available in the execution environment blocks browsed URLs, including localhost/data/file. Screenshot evidence was therefore rendered from the actual build artifact's SSR markup and compiled CSS using a static renderer. JavaScript/D3 `onMount` content is not represented in those screenshots; no mock runtime data was invented.
 
-## Final cleaned-head verification
+## Final verification evidence
 
-Cleaned feature head before this documentation-only record: `8033ed138baafc4bccaf3bb7a7b59adb8a7f3629`.
+Final documented feature head before this record: `368c6b3e5011aa0cc2c9ed98da4346424b4f2636`.
 
-Quality Gate `31557300585` passed:
+Quality Gate `31557403693` passed:
 
 - `npm run test:offline` ✅
 - `npm run verify:rules` ✅
