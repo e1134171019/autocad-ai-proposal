@@ -1,6 +1,6 @@
 # UX Hierarchy v4 — Visual System / Layout Redesign Implementation Plan
 
-> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
+> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task.
 
 **Goal:** Reweight the existing proposal so the page reads as Hero → Core Problem → Explanation → Product Simulation → Trust / Traceability → Short Conclusion, using one narrative accent and preserving CAD engineering colors and behavior.
 
@@ -17,307 +17,91 @@
 - Ordinary proposal prose uses neutral colors plus the existing primary blue; CAD semantic/status colors remain available.
 - No gradients, `box-shadow`, or `backdrop-filter`.
 - No unverified timing, efficiency, or productivity claims.
-- Final validation: `npm run test:offline`, `npm run verify:rules`, `npm run check`, `npm test`, `npm run audit:copy`, `npm run build`.
 
----
+## Completed tasks
 
-### Task 1: Visual hierarchy RED contracts
+- [x] Task 1 — Visual hierarchy RED contracts
+- [x] Task 2 — Global section-weight and narrative color system
+- [x] Task 3 — Reweight ACT01–ACT04
+- [x] Task 4 — Recompose ACT05 trust hierarchy
+- [x] Task 5 — Compress ACT06 into a short conclusion
+- [x] Task 6 — Full regression, branch preview, temporary workflow cleanup, and cleaned-head verification
 
-**Files:**
-- Modify: `tests/uxHierarchyContract.test.js`
-- Test: `tests/uxHierarchyContract.test.js`
+## Implementation results
 
-**Interfaces:**
-- Consumes: current source text from `src/app.css`, ACT components, and `src/lib/charts/contextMap.js`.
-- Produces: blocking contracts for unequal section weights, neutral narrative numbering, compact summary, mobile ACT05 sizing, and responsibility-safe context-map wording.
+### Unequal section hierarchy
 
-- [ ] **Step 1: Add failing v4 assertions**
+- Generic `.section` no longer requires `min-height: 100vh`.
+- Added semantic weights: `section-weight-xl`, `section-weight-l`, `section-weight-m`, `section-weight-s`.
+- Narrative reading width reduced to 1240px; CAD wide-stage container remains 1680px.
+- Ordinary section heading ceiling reduced while ACT01 remains the dominant page-level hero.
+- Mobile section spacing is reduced independently from desktop.
 
-Add tests that require:
+### Section roles
 
-```js
-expect(appCss).not.toMatch(/\.section\s*\{[^}]*min-height:\s*100vh/s);
-expect(appCss).toContain('.section-weight-xl');
-expect(appCss).toContain('.section-weight-l');
-expect(appCss).toContain('.section-weight-m');
-expect(appCss).toContain('.section-weight-s');
-expect(act03).not.toMatch(/li span\s*\{[^}]*var\(--danger\)/s);
-expect(act04).toContain('section-weight-xl');
-expect(act05).toContain('section-weight-l');
-expect(act05).toContain('@media (max-width: 768px)');
-expect(act05).toMatch(/\.chart\s*\{[^}]*min-height:/s);
-expect(act06).toContain('section-weight-s');
-expect(contextMap).not.toContain('AI AUTOMATION');
-```
+- ACT01 — XL: proposition, Before/After, core scope problem; six-section outline demoted.
+- ACT02 — M: current workflow explanation.
+- ACT03 — M: comparison; decorative danger-red risk numbering removed.
+- ACT04 — XL: Concept Simulation / CAD product demonstration climax.
+- ACT05 — L: Rule Engine primary, AI Assistant supporting, calculation context secondary, traceability conclusion.
+- ACT06 — S: compact conclusion.
 
-Also assert ACT02/ACT03 use `section-weight-m` and ordinary narrative components do not assign `color: var(--keyword-ai|standard|manual)`.
+### Color responsibilities
 
-- [ ] **Step 2: Run RED verification**
+- Existing proposal blue remains the ordinary narrative accent.
+- AI / standard / manual keyword colors remain compatibility tokens but are not used to classify ordinary prose.
+- Technical teal remains only for technical diagrams/context rather than a second narrative brand accent.
+- CAD ByLayer and interaction/status colors remain intact.
 
-Run through the existing PR Quality Gate after committing the test-only change.
+### ACT05 mobile/trust hierarchy
 
-Expected: only the new v4 assertions fail; the existing 108 tests remain green.
+- Mobile/tablet order: Rule Engine → AI Assistant → Calculation Context → Traceability.
+- Context chart min-height: 420px desktop, 260px mobile.
+- Traceability rows are compact on mobile.
+- Context map wording now uses `DRAWING → CONTEXT → RULE ENGINE → RESULT`; old `AI AUTOMATION` wording is removed without changing D3 data/interaction behavior.
 
-- [ ] **Step 3: Commit RED contract**
+### ACT06 responsibility conclusion
 
-Commit message:
+`人做工程判斷，程式做確定性計算，AI 協助查詢與解釋。`
 
-```text
-test: define UX hierarchy v4 visual contracts
-```
+## TDD evidence
 
----
+RED run: Quality Gate `31556254723`.
 
-### Task 2: Global section-weight and narrative color system
+- Five new v4 assertions failed as intended.
+- All 108 pre-existing tests remained green.
+- Offline contracts, project rules, and Svelte check passed before the new Vitest failures.
 
-**Files:**
-- Modify: `src/app.css`
-- Modify: `src/lib/tokens.css`
-- Test: `tests/uxHierarchyContract.test.js`
+During GREEN, one ACT05 order assertion was found to target the eyebrow word `TRACEABILITY` rather than the actual traceability section; the test was corrected to identify `<section class="traceability">` without weakening the production requirement. An unused ACT06 selector warning was also removed.
 
-**Interfaces:**
-- Consumes: existing spacing, color, and breakpoint tokens.
-- Produces: `.section-weight-xl`, `.section-weight-l`, `.section-weight-m`, `.section-weight-s` semantic layout classes and reduced ordinary section-title scale.
+## Preview evidence
 
-- [ ] **Step 1: Remove equal full-screen section rule**
+Preview Artifact v4 run `31556590902` succeeded.
 
-Replace generic `min-height: 100vh` with ordinary content flow and anchor spacing:
+- Artifact: `ux-hierarchy-v4-build`
+- Artifact id: `9126202048`
+- Digest: `sha256:f052f7e072140ffe78edaa00ee69355c9dc6b59e15dbef12c3fc4b1053aad62b`
+- Build head: `6168bd0e50a806be93f0d26482e13b765c9ed0ab`
+- The temporary preview workflow was deleted before final review.
+- Production GitHub Pages was not deployed or repointed.
 
-```css
-.section {
-  position: relative;
-  min-height: auto;
-  scroll-margin-top: var(--nav-height);
-  padding: var(--section-space-m) var(--content-side-padding);
-  border-top: var(--line-thin) solid var(--border);
-  background: var(--background);
-}
-```
+The managed Chromium available in the execution environment blocks browsed URLs, including localhost/data/file. Screenshot evidence was therefore rendered from the actual build artifact's SSR markup and compiled CSS using a static renderer. JavaScript/D3 `onMount` content is not represented in those screenshots; no mock runtime data was invented.
 
-- [ ] **Step 2: Add semantic section weights**
+## Final cleaned-head verification
 
-Add tokens:
+Cleaned feature head before this documentation-only record: `8033ed138baafc4bccaf3bb7a7b59adb8a7f3629`.
 
-```css
---section-space-xl: 96px;
---section-space-l: 80px;
---section-space-m: 64px;
---section-space-s: 48px;
-```
+Quality Gate `31557300585` passed:
 
-Add global classes:
+- `npm run test:offline` ✅
+- `npm run verify:rules` ✅
+- `npm run check` ✅ — 0 errors / 0 warnings
+- `npm test` ✅ — 22 files / 113 tests
+- `npm run audit:copy` ✅ — 0 findings
+- `npm run build` ✅ — adapter-static wrote `build`
 
-```css
-.section-weight-xl { padding-block: var(--section-space-xl); }
-.section-weight-l { padding-block: var(--section-space-l); }
-.section-weight-m { padding-block: var(--section-space-m); }
-.section-weight-s { padding-block: var(--section-space-s); }
-```
+Existing dependency audit still reports 4 vulnerabilities (3 low, 1 high). Dependency remediation remains outside the approved UX scope.
 
-On mobile, reduce them to 64 / 56 / 48 / 40px respectively.
+## Scope still excluded
 
-- [ ] **Step 3: Reduce ordinary heading scale**
-
-Change ordinary `.section-title` from a 4.4rem ceiling to approximately 3.35rem while leaving ACT01 `h1` component styling authoritative.
-
-- [ ] **Step 4: Keep one narrative accent**
-
-Do not remove CAD or status tokens. Keep `--keyword-ai`, `--keyword-standard`, and `--keyword-manual` only as compatibility tokens; no narrative component may use them as color values. Keep `--technical` only for technical diagrams/status, not general prose.
-
-- [ ] **Step 5: Run focused tests and commit**
-
-Expected: section-weight/global-color assertions pass; component-specific RED assertions remain.
-
-Commit message:
-
-```text
-feat: add unequal section weight system
-```
-
----
-
-### Task 3: Reweight ACT01–ACT04
-
-**Files:**
-- Modify: `src/lib/components/Act01Hero.svelte`
-- Modify: `src/lib/components/Act02Flow.svelte`
-- Modify: `src/lib/components/Act03Problem.svelte`
-- Modify: `src/lib/components/Act04Solution.svelte`
-- Test: `tests/uxHierarchyContract.test.js`
-
-**Interfaces:**
-- Consumes: section-weight classes from Task 2.
-- Produces: Hero XL, workflow M, comparison M, Concept Simulation XL.
-
-- [ ] **Step 1: Apply explicit section weights**
-
-Use:
-
-```svelte
-<section id="act-01" class="section section-weight-xl hero">
-<section id="act-02" class="section section-weight-m flow">
-<section id="act-03" class="section section-weight-m problem">
-<section id="act-04" class="section section-weight-xl solution">
-```
-
-- [ ] **Step 2: Tighten ACT01 secondary material**
-
-Keep hero proposition, Before/After, and core problem dominant. Reduce the vertical gap before the narrative and proposal outline; reduce outline card minimum height/padding so the six-part outline reads as secondary navigation rather than six equal calls to action.
-
-- [ ] **Step 3: Neutralize ACT03 decorative danger color**
-
-Change generic risk index numbering from `var(--danger)` to a neutral metadata color such as `var(--text-muted)`. Keep danger red available for real warning/error states elsewhere.
-
-- [ ] **Step 4: Give ACT04 the large stage without adding marketing chrome**
-
-Keep the existing Concept Simulation disclosure. Tighten disclosure copy spacing, then allow the existing wide CAD simulator to provide the visual climax. Do not add shadows, gradients, or new simulator behavior.
-
-- [ ] **Step 5: Run focused tests and commit**
-
-Commit message:
-
-```text
-feat: reweight proposal and simulation sections
-```
-
----
-
-### Task 4: Recompose ACT05 trust hierarchy
-
-**Files:**
-- Modify: `src/lib/components/Act05Intelligence.svelte`
-- Modify: `src/lib/charts/contextMap.js`
-- Test: `tests/uxHierarchyContract.test.js`
-
-**Interfaces:**
-- Consumes: v3 `deterministicResponsibilities`, `assistantResponsibilities`, `traceabilityFields` and D3 context layers.
-- Produces: L-weight trust section where Rule Engine is primary, AI Assistant is supporting, traceability closes the section, and mobile reaches useful content sooner.
-
-- [ ] **Step 1: Apply L section weight and reduce desktop chart dominance**
-
-Use `section-weight-l`. Reduce `.intelligence-layout` gap and chart visual height from 520px to approximately 420px while preserving the SVG viewBox behavior.
-
-- [ ] **Step 2: Make Rule Engine primary and AI Assistant secondary**
-
-Keep both responsibility blocks but reduce AI Assistant surface emphasis: neutral border/surface, slightly tighter padding, no second-accent color. Rule Engine remains open primary content rather than an equal card.
-
-- [ ] **Step 3: Improve mobile order and panel height**
-
-At `max-width: 768px`, set the chart container to approximately 260px minimum height and keep content stacked as Rule Engine → AI Assistant → Traceability. Do not hide the chart, but prevent it from consuming most of the first mobile viewport.
-
-- [ ] **Step 4: Make traceability a compact evidence chain**
-
-Keep six fields and two-column desktop layout. Reduce evidence-item minimum height/padding; on mobile use single-column rows with compact spacing rather than six large cards.
-
-- [ ] **Step 5: Remove obsolete AI-automation wording from context map**
-
-Change D3 accessibility/caption text from AI-owned calculation language to the approved responsibility model, for example:
-
-```js
-.attr('aria-label', '圖面計算上下文五層結構')
-...
-.text('DRAWING → CONTEXT → RULE ENGINE → RESULT');
-```
-
-Do not change the D3 data or interaction behavior.
-
-- [ ] **Step 6: Run focused tests and commit**
-
-Commit message:
-
-```text
-feat: clarify calculation trust hierarchy
-```
-
----
-
-### Task 5: Compress ACT06 into a short conclusion
-
-**Files:**
-- Modify: `src/lib/components/Act06Summary.svelte`
-- Test: `tests/uxHierarchyContract.test.js`
-
-**Interfaces:**
-- Consumes: v3 responsibility boundary.
-- Produces: S-weight closing section with no new CTA and no claim that AI performs deterministic calculation.
-
-- [ ] **Step 1: Apply S section weight**
-
-Use:
-
-```svelte
-<section id="act-06" class="section section-weight-s summary">
-```
-
-- [ ] **Step 2: Tighten copy and spacing**
-
-Reduce `summary-copy`, progression, and blockquote margins from XL-scale spacing. Keep the conclusion concise and visibly lighter than ACT04/ACT05.
-
-- [ ] **Step 3: Preserve responsibility boundary in final copy**
-
-Replace any summary sentence that implies AI performs exact length/quantity calculation with the approved conclusion:
-
-```text
-人做工程判斷，程式做確定性計算，AI 協助查詢與解釋。
-```
-
-- [ ] **Step 4: Run focused tests and commit**
-
-Commit message:
-
-```text
-feat: compress proposal conclusion
-```
-
----
-
-### Task 6: Full regression, branch preview, cleanup
-
-**Files:**
-- Temporary create/delete if needed: `.github/workflows/preview-artifact-v4.yml`
-- No production deployment files retained.
-
-**Interfaces:**
-- Consumes: complete v4 branch.
-- Produces: fresh CI evidence and Desktop/Mobile screenshots from the actual static build.
-
-- [ ] **Step 1: Run full Quality Gate**
-
-Required commands:
-
-```text
-npm run test:offline
-npm run verify:rules
-npm run check
-npm test
-npm run audit:copy
-npm run build
-```
-
-Expected: all pass, with no new Svelte errors/warnings and no Copy Gate findings.
-
-- [ ] **Step 2: Build branch-only preview artifact**
-
-If required, add a temporary GitHub Actions workflow that performs `npm ci`, `npm run build`, and uploads `build/` only. It must not deploy Pages.
-
-- [ ] **Step 3: Render Desktop and Mobile evidence**
-
-Capture at minimum:
-
-- Desktop first screen and representative full-page hierarchy;
-- Mobile first screen;
-- Mobile ACT04/ACT05 transition;
-- Mobile ACT05 trust/traceability;
-- Mobile short ACT06 conclusion.
-
-- [ ] **Step 4: Remove temporary preview workflow**
-
-Delete one-off preview workflow before final review diff.
-
-- [ ] **Step 5: Run fresh cleaned-head Quality Gate**
-
-Do not claim completion until this run passes on the cleaned head.
-
-- [ ] **Step 6: Update Draft PR #2 body**
-
-Record v4 scope, RED/GREEN evidence, preview artifact evidence, and the fact that `main` / production remain untouched.
+No merge to `main`, no production deployment, no real AutoCAD API/DWG integration, no C# plugin implementation, no Ollama runtime integration, no CAD simulator behavior rewrite, no dependency/security remediation, no README/version cleanup, and no AGENTS/Drive governance reconciliation.
