@@ -1,12 +1,12 @@
 <!-- 職責：呈現九個現況 CAD 作業流程節點與完整框選動作。 -->
 <!-- 輸入：currentFlowNodes 與共用 CadProcess。 -->
-<!-- 輸出：ACT 02 現況流程互動。 -->
+<!-- 輸出：M 權重的 ACT 02 現況流程互動。 -->
 <script>
   import CadProcess from './CadProcess.svelte';
   import { currentFlowNodes } from '$lib/content/siteContent.js';
 </script>
 
-<section id="act-02" class="section flow">
+<section id="act-02" class="section section-weight-m flow">
   <div class="section-inner-wide">
     <CadProcess
       eyebrow="ACT 02 / CURRENT MANUAL WORKFLOW"
