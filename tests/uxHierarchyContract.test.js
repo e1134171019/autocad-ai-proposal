@@ -1,17 +1,21 @@
-// 職責：鎖定客戶可理解的資訊階層、責任分離、手機導覽與 CAD 語意色；避免 UX 改版破壞工程邊界。
+// 職責：鎖定客戶可理解的資訊階層、責任分離、手機導覽、視覺權重與 CAD 語意色；避免 UX 改版破壞工程邊界。
 import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { describe, expect, it } from 'vitest';
 
 const read = (path) => readFileSync(resolve(process.cwd(), path), 'utf8');
 
+const APP_CSS_PATH = 'src/app.css';
 const HERO_PATH = 'src/lib/components/Act01Hero.svelte';
+const ACT02_PATH = 'src/lib/components/Act02Flow.svelte';
+const ACT03_PATH = 'src/lib/components/Act03Problem.svelte';
 const PROCESS_PATH = 'src/lib/components/CadProcess.svelte';
 const ACT04_PATH = 'src/lib/components/Act04Solution.svelte';
 const ACT05_PATH = 'src/lib/components/Act05Intelligence.svelte';
 const ACT06_PATH = 'src/lib/components/Act06Summary.svelte';
 const NAV_PATH = 'src/lib/components/Nav.svelte';
 const CONTENT_PATH = 'src/lib/content/siteContent.js';
+const CONTEXT_MAP_PATH = 'src/lib/charts/contextMap.js';
 const TOKENS_PATH = 'src/lib/tokens.css';
 
 describe('UX hierarchy client comprehension contract', () => {
@@ -105,6 +109,55 @@ describe('UX hierarchy client comprehension contract', () => {
     }
 
     expect(read(ACT06_PATH)).not.toContain('border-top: 3px solid var(--keyword-standard)');
+  });
+
+  it('v4 取消一般章節 100vh 等權並建立 XL/L/M/S 視覺權重', () => {
+    const appCss = read(APP_CSS_PATH);
+    const hero = read(HERO_PATH);
+    const act02 = read(ACT02_PATH);
+    const act03 = read(ACT03_PATH);
+    const act04 = read(ACT04_PATH);
+    const act05 = read(ACT05_PATH);
+    const act06 = read(ACT06_PATH);
+
+    expect(appCss).not.toMatch(/\.section\s*\{[^}]*min-height:\s*100vh/s);
+    ['.section-weight-xl', '.section-weight-l', '.section-weight-m', '.section-weight-s']
+      .forEach((selector) => expect(appCss).toContain(selector));
+    expect(hero).toContain('section-weight-xl');
+    expect(act02).toContain('section-weight-m');
+    expect(act03).toContain('section-weight-m');
+    expect(act04).toContain('section-weight-xl');
+    expect(act05).toContain('section-weight-l');
+    expect(act06).toContain('section-weight-s');
+  });
+
+  it('ACT 03 風險編號不把 danger red 當裝飾性強調', () => {
+    const act03 = read(ACT03_PATH);
+    expect(act03).not.toMatch(/li span\s*\{[^}]*color:\s*var\(--danger\)/s);
+  });
+
+  it('ACT 05 手機技術圖不先佔滿畫面且仍保留責任與證據順序', () => {
+    const intelligence = read(ACT05_PATH);
+
+    expect(intelligence).toContain('@media (max-width: 768px)');
+    expect(intelligence).toMatch(/@media \(max-width: 768px\)[\s\S]*?\.chart\s*\{[^}]*min-height:\s*(?:2[0-9]{2}|3[0-2][0-9])px/s);
+    expect(intelligence.indexOf('C# / Rule Engine')).toBeLessThan(intelligence.indexOf('AI Assistant'));
+    expect(intelligence.indexOf('AI Assistant')).toBeLessThan(intelligence.indexOf('TRACEABILITY'));
+  });
+
+  it('ACT 05 計算上下文不再把 deterministic pipeline 標成 AI AUTOMATION', () => {
+    const contextMap = read(CONTEXT_MAP_PATH);
+
+    expect(contextMap).not.toContain('AI AUTOMATION');
+    expect(contextMap).toContain('RULE ENGINE');
+    expect(contextMap).toMatch(/計算上下文|RULE ENGINE/);
+  });
+
+  it('ACT 06 是短收尾且明確維持人、程式、AI 責任邊界', () => {
+    const summary = read(ACT06_PATH);
+
+    expect(summary).toContain('section-weight-s');
+    expect(summary).toContain('人做工程判斷，程式做確定性計算，AI 協助查詢與解釋。');
   });
 
   it('CAD ByLayer 與操作狀態色仍保留', () => {
