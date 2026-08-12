@@ -1,6 +1,6 @@
-// 職責：集中管理 v5.9.3 人話敘事、現況流程、AI 流程、整層框選與單位資料。
+// 職責：集中管理 v5.9.3 人話敘事、現況流程、外掛流程、整層框選與單位資料。
 // 輸入：各 ACT 元件與 CAD 模擬器讀取資料。
-// 輸出：不可變的網站內容與示範圖面資料。
+// 輸出：不可變的網站內容、責任邊界與示範圖面資料。
 
 const FUTURE_EXTERIOR_SEGMENTS = Object.freeze([
   55, 15, 175, 15, 65, 160, 55, 15,
@@ -95,10 +95,10 @@ export const heroContent = Object.freeze({
       title: '真正的難點',
       paragraphs: [
         '一個 CAD 檔案裡，可能同時放著 4 樓、6 樓和屋頂層的施工圖，也可能同時包含外部、深井、平面圖、立面圖，以及修改前後的不同版本。',
-        '例如，繪圖人員現在只想計算「6 樓外部施工範圍」，AI 就不能把 6 樓深井、其他樓層，或舊版本中的聚合線一起加進來。圖面中的元件也是一樣，只有位於這次施工範圍內、符合指定條件的元件才能列入數量。',
+        '例如，繪圖人員現在只想計算「6 樓外部施工範圍」，系統就不能把 6 樓深井、其他樓層，或舊版本中的聚合線一起加進來。圖面中的元件也是一樣，只有位於這次施工範圍內、符合指定條件的元件才能列入數量。',
         '所以真正的難點不是長度怎麼加，而是先確認這次要算的是哪一張圖、哪一層、哪一個範圍，以及哪些線條和元件應該被算進來。'
       ],
-      highlight: 'AI 必須先知道「這次要算什麼」，才不會把不該算的內容一起加進來。'
+      highlight: '系統必須先知道「這次要算什麼」，才不會把不該算的內容一起加進來。'
     },
     {
       id: '04',
@@ -106,7 +106,7 @@ export const heroContent = Object.freeze({
       paragraphs: [
         '在開始做工具之前，我們要先看懂繪圖人員現在是怎麼完成一張施工圖的。',
         '圖面拿到後怎麼拆？施工範圍怎麼判斷？聚合線怎麼畫？每段長度怎麼查看？整張圖怎麼加總？元件數量又是怎麼整理和檢查的？',
-        '只有把這些實際操作弄清楚，AI 才知道接下來要看哪張圖、計算哪些內容，以及怎麼整理結果。',
+        '只有把這些實際操作弄清楚，系統才知道接下來要處理哪張圖、套用哪些計算規則，以及怎麼整理結果。',
         '目前的作業流程從原始 CAD 圖面開始。'
       ]
     }
@@ -127,7 +127,7 @@ export const currentFlowNodes = Object.freeze([
 
 export const futureFlowSteps = Object.freeze([
   { id: 1, label: '建商提供原始 CAD 圖面', desc: '平面圖、立面圖與剖面圖，流程起點不變。', animType: 'static' },
-  { id: 2, label: '啟動外掛後，自動建立標準圖層', desc: '外掛啟動後，系統會自動建立 AI-EXTERIOR、AI-SHAFT、AI-DIM 與 AI-BRACE 等標準圖層，作為後續 AI 分類與程式計算的依據。', animType: 'standard-layers', highlights: [{ text: '自動建立', tone: 'ai' }, { text: '標準圖層', tone: 'standard' }, { text: 'AI 分類', tone: 'ai' }] },
+  { id: 2, label: '啟動外掛後，自動建立標準圖層', desc: '外掛啟動後，系統會自動建立 AI-EXTERIOR、AI-SHAFT、AI-DIM 與 AI-BRACE 等標準圖層，作為後續規則分類與程式計算的依據。', animType: 'standard-layers', highlights: [{ text: '自動建立', tone: 'ai' }, { text: '標準圖層', tone: 'standard' }, { text: '規則分類', tone: 'emphasis' }] },
   { id: 3, label: '繪圖人員判斷施工位置', desc: '繪圖人員依照建商圖面與施工需求，判斷外部與深井哪些位置需要施工，作為後續繪製施工線的依據。', animType: 'static-zones', highlights: [{ text: '繪圖人員', tone: 'manual' }, { text: '判斷施工位置', tone: 'manual' }] },
   { id: 4, label: '使用外掛工具列繪製施工範圍', desc: '位置確認後，外部施工線與深井仍由繪圖人員依工程判斷逐段繪製，AI 不代替繪圖。每完成一段外部線或一個深井，系統才會自動讀取物件長度並帶入尺寸標註，再依照標準圖層整理後續計算結果。', animType: 'guided-draw', highlights: [{ text: '逐段繪製', tone: 'manual' }, { text: '外部施工線與深井仍由繪圖人員依工程判斷逐段繪製', tone: 'manual' }, { text: 'AI 不代替繪圖', tone: 'emphasis' }, { text: '自動讀取物件長度並帶入尺寸標註', tone: 'ai' }, { text: '標準圖層', tone: 'standard' }] },
   { id: 5, label: '不用手動切換圖層，選擇工具就能直接繪製', desc: '原本繪圖前需要先選擇正確圖層，再使用線段或聚合線繪製。導入外掛後，繪圖人員只要從工具列選擇外部線或深井工具，系統就會自動帶入對應的標準圖層、顏色與線寬，不需要再另外切換圖層。', animType: 'auto-layer', highlights: [{ text: '不用手動切換圖層', tone: 'ai' }, { text: '自動帶入', tone: 'ai' }, { text: '標準圖層', tone: 'standard' }] },
@@ -160,20 +160,29 @@ export const risks = Object.freeze([
 ].map((label, index) => ({ id: index + 1, label })));
 
 export const intelligenceLayers = Object.freeze([
-  { id: 1, label: '圖面身分', desc: 'AI 先確認正在處理哪一張圖。', items: ['樓層', '立面', '剖面', '圖號', '版本'] },
-  { id: 2, label: '施工區域', desc: 'AI 確認本次作業的空間邊界。', items: ['外部', '深井', '區域名稱', '框選範圍'] },
-  { id: 3, label: '圖面物件', desc: 'AI 理解需要設定、取得與整理的 CAD 內容。', items: ['Polyline', '圖塊', '文字', '圖層'] },
-  { id: 4, label: '公司規則', desc: 'AI 套用公司確認的繪圖與換算條件。', items: ['圖層名稱', '顏色', '線寬', '單位', '換算方式'] },
-  { id: 5, label: '計算關係', desc: 'AI 決定哪些內容要分類、加總、換算或隔離。', items: ['長度加總', '元件統計', '禁止混算'] }
+  { id: 1, label: '圖面身分', desc: '系統先確認目前圖面的樓層、圖號與版本脈絡。', items: ['樓層', '立面', '剖面', '圖號', '版本'] },
+  { id: 2, label: '施工區域', desc: '框選範圍界定本次計算的空間邊界。', items: ['外部', '深井', '區域名稱', '框選範圍'] },
+  { id: 3, label: '圖面物件', desc: '規則引擎讀取需要分類與計算的 CAD 物件資料。', items: ['Polyline', '圖塊', '文字', '圖層'] },
+  { id: 4, label: '公司規則', desc: '規則引擎套用公司確認的圖層、單位與換算條件。', items: ['圖層名稱', '顏色', '線寬', '單位', '換算方式'] },
+  { id: 5, label: '計算關係', desc: '計算流程依規則完成分類、加總、數量換算與隔離。', items: ['長度加總', '元件統計', '禁止混算'] }
 ]);
 
-export const aiResponsibilities = Object.freeze([
-  '理解目前圖面身分、施工區域與框選範圍',
-  '自動設定圖層、顏色及線寬，並取得各段長度',
-  '自動分類加總，依公司條件換算施工項目與元件數量',
-  '整理異常、差異、缺少條件與複核摘要',
-  '回答使用者查詢，並整理圖面與 PDF 報告內容'
+export const deterministicResponsibilities = Object.freeze([
+  '依框選範圍與標準圖層過濾有效物件，排除不符合條件的物件',
+  '讀取 CAD 幾何長度與物件資料，保留原始物件對應',
+  '依公司規則分類、加總長度並換算施工項目與元件數量',
+  '保留忽略原因、計算依據與可追溯結果'
 ]);
+
+export const assistantResponsibilities = Object.freeze([
+  '查詢已完成的計算結果與圖面依據',
+  '解釋分類結果、忽略原因與套用規則',
+  '摘要目前施工區域的長度、數量與異常項目',
+  '整理可追溯紀錄與報告說明'
+]);
+
+// 向後相容既有引用；正式責任定義以 assistantResponsibilities 為準。
+export const aiResponsibilities = assistantResponsibilities;
 
 export const benefits = Object.freeze([
   '人工計算與複核集中在同一套流程', '漏算、重算與混算交由規則檢查', '圖面判讀依標準圖層與框選規則執行',
