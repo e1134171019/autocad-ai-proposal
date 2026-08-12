@@ -25,12 +25,11 @@
 - [x] Task 3 — Reweight ACT01–ACT04
 - [x] Task 4 — Recompose ACT05 trust hierarchy
 - [x] Task 5 — Compress ACT06 into a short conclusion
-- [x] Task 6 — Full regression, branch preview, temporary workflow cleanup, and cleaned-head verification
+- [x] Task 6 — Full regression, branch preview, temporary workflow cleanup, and final-head verification
 
 ## Implementation results
 
 ### Unequal section hierarchy
-
 - Generic `.section` no longer requires `min-height: 100vh`.
 - Added semantic weights: `section-weight-xl`, `section-weight-l`, `section-weight-m`, `section-weight-s`.
 - Narrative reading width reduced to 1240px; CAD wide-stage container remains 1680px.
@@ -38,7 +37,6 @@
 - Mobile section spacing is reduced independently from desktop.
 
 ### Section roles
-
 - ACT01 — XL: proposition, Before/After, core scope problem; six-section outline demoted.
 - ACT02 — M: current workflow explanation.
 - ACT03 — M: comparison; decorative danger-red risk numbering removed.
@@ -47,27 +45,22 @@
 - ACT06 — S: compact conclusion.
 
 ### Color responsibilities
-
 - Existing proposal blue remains the ordinary narrative accent.
 - AI / standard / manual keyword colors remain compatibility tokens but are not used to classify ordinary prose.
 - Technical teal remains only for technical diagrams/context rather than a second narrative brand accent.
 - CAD ByLayer and interaction/status colors remain intact.
 
 ### ACT05 mobile/trust hierarchy
-
 - Mobile/tablet order: Rule Engine → AI Assistant → Calculation Context → Traceability.
 - Context chart min-height: 420px desktop, 260px mobile.
 - Traceability rows are compact on mobile.
 - Context map wording now uses `DRAWING → CONTEXT → RULE ENGINE → RESULT`; old `AI AUTOMATION` wording is removed without changing D3 data/interaction behavior.
 
 ### ACT06 responsibility conclusion
-
 `人做工程判斷，程式做確定性計算，AI 協助查詢與解釋。`
 
 ## TDD evidence
-
 RED run: Quality Gate `31556254723`.
-
 - Five new v4 assertions failed as intended.
 - All 108 pre-existing tests remained green.
 - Offline contracts, project rules, and Svelte check passed before the new Vitest failures.
@@ -75,9 +68,7 @@ RED run: Quality Gate `31556254723`.
 During GREEN, one ACT05 order assertion was found to target the eyebrow word `TRACEABILITY` rather than the actual traceability section; the test was corrected to identify `<section class="traceability">` without weakening the production requirement. An unused ACT06 selector warning was also removed.
 
 ## Preview evidence
-
 Preview Artifact v4 run `31556590902` succeeded.
-
 - Artifact: `ux-hierarchy-v4-build`
 - Artifact id: `9126202048`
 - Digest: `sha256:f052f7e072140ffe78edaa00ee69355c9dc6b59e15dbef12c3fc4b1053aad62b`
@@ -87,12 +78,9 @@ Preview Artifact v4 run `31556590902` succeeded.
 
 The managed Chromium available in the execution environment blocks browsed URLs, including localhost/data/file. Screenshot evidence was therefore rendered from the actual build artifact's SSR markup and compiled CSS using a static renderer. JavaScript/D3 `onMount` content is not represented in those screenshots; no mock runtime data was invented.
 
-## Final verification evidence
-
-Final documented feature head before this record: `368c6b3e5011aa0cc2c9ed98da4346424b4f2636`.
-
-Quality Gate `31557403693` passed:
-
+## Final verification
+Feature head verified before this documentation record: `0687b38a03cbe02bfe25047da06aa93f2cfd8453`.
+Quality Gate `31557462300` passed:
 - `npm run test:offline` ✅
 - `npm run verify:rules` ✅
 - `npm run check` ✅ — 0 errors / 0 warnings
@@ -103,5 +91,4 @@ Quality Gate `31557403693` passed:
 Existing dependency audit still reports 4 vulnerabilities (3 low, 1 high). Dependency remediation remains outside the approved UX scope.
 
 ## Scope still excluded
-
 No merge to `main`, no production deployment, no real AutoCAD API/DWG integration, no C# plugin implementation, no Ollama runtime integration, no CAD simulator behavior rewrite, no dependency/security remediation, no README/version cleanup, and no AGENTS/Drive governance reconciliation.
