@@ -1,19 +1,21 @@
-<!-- 職責：以專案總結收斂工程經驗規則化、標準化與 AI 系統化價值。 -->
+<!-- 職責：以短收尾收斂工程經驗規則化、程式計算與 AI 助理的責任邊界。 -->
 <!-- 輸入：固定提案總結文案。 -->
-<!-- 輸出：ACT 06 最終總結，不包含額外行動呼籲。 -->
-<section id="act-06" class="section summary">
+<!-- 輸出：S 權重 ACT 06 最終總結，不包含額外行動呼籲。 -->
+<section id="act-06" class="section section-weight-s summary">
   <div class="section-inner">
     <p class="eyebrow">ACT 06 / PROJECT SUMMARY</p>
     <h2 class="section-title">工程經驗規則化與專案總結</h2>
 
+    <p class="responsibility-line">人做工程判斷，程式做確定性計算，AI 協助查詢與解釋。</p>
+
     <div class="summary-copy">
       <p>
         本專案將繪圖人員長期累積的拆圖方式、施工範圍判斷、線段與深井繪製、尺寸標註、長度計算及元件清點經驗，整理成明確的
-        <strong class="keyword-standard">圖面條件、判斷邏輯與計算規則</strong>，逐步建立可重複使用的 AutoCAD AI 作業流程。
+        <strong class="keyword-standard">圖面條件、判斷邏輯與計算規則</strong>，逐步建立可重複使用的 AutoCAD 作業流程。
       </p>
       <p>
-        <strong class="keyword-manual">繪圖人員仍負責工程判斷與最終確認</strong>；AI 依照公司建立的標準，在物件完成後協助帶入長度、建立標註、分類加總、統計數量與檢查結果。隨著實際案例持續累積，作業將由個人經驗逐步走向
-        <strong class="keyword-standard">規則化、標準化與系統化</strong>，作為未來擴大 <strong class="keyword-ai">AI 自動化應用</strong>的基礎。
+        <strong class="keyword-manual">繪圖人員仍負責工程判斷與最終確認</strong>；程式依標準圖層、框選範圍與公司規則處理精確的分類、長度與數量，AI 助理使用既有結果協助查詢、解釋與摘要。隨著實際案例持續累積，作業由個人經驗逐步走向
+        <strong class="keyword-standard">規則化、標準化與系統化</strong>。
       </p>
     </div>
 
@@ -30,18 +32,22 @@
 </section>
 
 <style>
-  .summary { min-height: auto; background: var(--bg-surface); }
-  .summary-copy { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-5); margin-top: var(--space-6); padding-top: var(--space-5); border-top: var(--line-thin) solid var(--border-strong); }
-  .summary-copy p { margin: 0; color: var(--text-secondary); font-size: clamp(1rem, 1.35vw, 1.15rem); }
+  .summary { background: var(--bg-surface); }
+  .responsibility-line { max-width: 900px; margin: var(--space-3) 0 0; color: var(--foreground); font: 600 clamp(1.2rem, 2vw, 1.65rem)/1.45 var(--font-display); letter-spacing: -.02em; }
+  .summary-copy { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4); margin-top: var(--space-4); padding-top: var(--space-4); border-top: var(--line-thin) solid var(--border-strong); }
+  .summary-copy p { margin: 0; color: var(--text-secondary); font-size: clamp(.98rem, 1.2vw, 1.08rem); }
   .keyword-ai, .keyword-standard, .keyword-manual { font-weight: 700; }
-  .progression { display: grid; grid-template-columns: repeat(3, 1fr); margin-top: var(--space-6); border-top: var(--line-thin) solid var(--border-strong); border-bottom: var(--line-thin) solid var(--border-strong); }
-  .progression div { display: flex; align-items: center; gap: var(--space-2); padding: var(--space-3) 0; }
+  .progression { display: grid; grid-template-columns: repeat(3, 1fr); margin-top: var(--space-4); border-top: var(--line-thin) solid var(--border-strong); border-bottom: var(--line-thin) solid var(--border-strong); }
+  .progression div { display: flex; align-items: center; gap: var(--space-2); padding: var(--space-2) 0; }
   .progression div + div { padding-left: var(--space-3); border-left: var(--line-thin) solid var(--border); }
-  .progression span { color: var(--primary); font: 600 .72rem/1 var(--font-display); }
-  .progression strong { color: var(--foreground); font: 600 clamp(1rem, 1.6vw, 1.3rem)/1.35 var(--font-display); }
-  blockquote { max-width: 1040px; margin: var(--space-6) 0 0; padding: var(--space-5) 0 0; border-top: 3px solid var(--border-strong); color: var(--foreground); font: 600 clamp(1.55rem, 3vw, 2.8rem)/1.35 var(--font-display); letter-spacing: -.035em; }
+  .progression span { color: var(--primary); font: 600 .68rem/1 var(--font-display); }
+  .progression strong { color: var(--foreground); font: 600 clamp(.95rem, 1.4vw, 1.15rem)/1.35 var(--font-display); }
+  blockquote { max-width: 980px; margin: var(--space-4) 0 0; padding: var(--space-3) 0 0; border-top: 2px solid var(--border-strong); color: var(--foreground); font: 600 clamp(1.3rem, 2.5vw, 2.15rem)/1.35 var(--font-display); letter-spacing: -.03em; }
   @media (max-width: 768px) {
     .summary-copy, .progression { grid-template-columns: 1fr; }
+    .summary-copy { gap: var(--space-3); margin-top: var(--space-3); padding-top: var(--space-3); }
+    .progression { margin-top: var(--space-3); }
     .progression div + div { padding-left: 0; border-top: var(--line-thin) solid var(--border); border-left: 0; }
+    blockquote { margin-top: var(--space-3); }
   }
 </style>
