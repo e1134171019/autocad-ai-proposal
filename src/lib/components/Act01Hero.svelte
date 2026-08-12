@@ -1,6 +1,6 @@
-<!-- 職責：先用一個清楚首屏說明 AutoCAD 驗算提案，再補背景與章節導覽。 -->
+<!-- 職責：先用一個清楚首屏說明 AutoCAD 驗算提案，再補真正難點、背景與章節導覽。 -->
 <!-- 輸入：heroContent 提案文案。 -->
-<!-- 輸出：首屏價值主張、Before/After、背景敘事與次要六章導覽。 -->
+<!-- 輸出：首屏價值主張、Before/After、計算範圍難點、背景敘事與次要六章導覽。 -->
 <script>
   import { heroContent } from '$lib/content/siteContent.js';
 
@@ -61,6 +61,12 @@
           <strong>繪圖 → 框選施工範圍 → 系統整理長度與數量 → 人員確認</strong>
         </div>
       </div>
+
+      <div class="problem-bridge">
+        <p class="problem-label">真正難點</p>
+        <h2>真正的問題不是把數字加起來，而是先確認這一次哪些物件應該算。</h2>
+        <p>同一張 DWG 可能同時有不同樓層、施工區域、版本與參考物件；先界定本次範圍，後面的長度與數量才有一致的計算基準。</p>
+      </div>
     </header>
 
     <div class="narrative" aria-label="提案背景">
@@ -103,6 +109,10 @@
   .workflow-row strong { color: var(--foreground); font: 600 clamp(1rem, 1.7vw, 1.3rem)/1.6 var(--font-display); }
   .workflow-row.proposed { border-left: 3px solid var(--primary); padding-left: var(--space-3); }
   .workflow-row.proposed .workflow-label { color: var(--primary); }
+  .problem-bridge { max-width: 940px; margin-top: var(--space-5); padding-top: var(--space-4); border-top: var(--line-thin) solid var(--border); }
+  .problem-label { margin: 0 0 var(--space-2); color: var(--text-muted); font: 600 .76rem/1.4 var(--font-display); letter-spacing: .1em; }
+  .problem-bridge h2 { margin: 0; color: var(--foreground); font: 600 clamp(1.75rem, 3.2vw, 3rem)/1.2 var(--font-display); letter-spacing: -.04em; }
+  .problem-bridge p:last-child { max-width: 800px; margin: var(--space-3) 0 0; color: var(--text-secondary); font-size: 1rem; }
   .narrative { margin-top: var(--space-6); border-top: var(--line-thin) solid var(--border-strong); }
   article { display: grid; grid-template-columns: 80px minmax(0, 1fr); gap: var(--space-3); padding: var(--space-5) 0; border-bottom: var(--line-thin) solid var(--border); }
   .copy { display: grid; grid-template-columns: minmax(180px, 280px) minmax(0, 1fr); gap: var(--space-4); }
@@ -124,6 +134,7 @@
   }
   @media (max-width: 768px) { /* --bp-md */
     .workflow-row { grid-template-columns: 1fr; gap: var(--space-1); }
+    .problem-bridge h2 { font-size: clamp(1.65rem, 8vw, 2.35rem); }
     .outline-grid { grid-template-columns: 1fr; }
     .outline-item { min-height: 0; }
     article { grid-template-columns: 42px minmax(0, 1fr); }
