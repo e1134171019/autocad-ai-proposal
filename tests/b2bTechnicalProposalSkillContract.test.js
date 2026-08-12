@@ -47,4 +47,25 @@ describe('b2b technical proposal messaging skill contract', () => {
     expect(source).toMatch(/Greenfield/i);
     expect(source).not.toMatch(/ACT0[1-9]|AutoCAD|DWG/);
   });
+
+  it('compresses frontstage proposal content without deleting engineering meaning', () => {
+    const source = readSkill();
+    const compressionIndex = source.indexOf('## Proposal Compression');
+    const titlesIndex = source.indexOf('## Titles Are Downstream');
+
+    expect(compressionIndex).toBeGreaterThan(-1);
+    expect(titlesIndex).toBeGreaterThan(compressionIndex);
+    expect(source).toMatch(/Frontstage Payload/i);
+    expect(source).toMatch(/Must show/i);
+    expect(source).toMatch(/Evidence carries/i);
+    expect(source).toMatch(/Background only/i);
+    expect(source).toMatch(/Remove or move/i);
+    expect(source).toMatch(/internal analysis/i);
+    expect(source).toMatch(/frontstage/i);
+    expect(source).toMatch(/interaction.*evidence|evidence.*interaction/i);
+    expect(source).toMatch(/workflow steps|meaningful workflow/i);
+    expect(source).toMatch(/analysis leakage/i);
+    expect(source).toMatch(/over-explanation/i);
+    expect(source).toMatch(/message duplication/i);
+  });
 });
