@@ -9,7 +9,6 @@
 **Tech Stack:** Svelte 5, Vite, D3, CSS custom properties, Vitest, existing project Quality Gate.
 
 ## Global Constraints
-
 - Work only on `feat/ux-hierarchy-v2`; `main` is not modified.
 - Do not merge, deploy production, delete branches, or publish.
 - Preserve existing CAD calculation, selection, layer filtering, quantity, command, animation, and ByLayer semantics.
@@ -19,7 +18,6 @@
 - No unverified timing, efficiency, or productivity claims.
 
 ## Completed tasks
-
 - [x] Visual hierarchy RED contracts
 - [x] Global section-weight and narrative color system
 - [x] Reweight ACT01–ACT04
@@ -27,49 +25,29 @@
 - [x] Compress ACT06 into a short conclusion
 - [x] Full regression, branch preview, temporary workflow cleanup, and final-head verification
 
-## Implementation results
-
-### Unequal section hierarchy
-- Generic `.section` no longer requires `min-height: 100vh`.
-- Added `section-weight-xl`, `section-weight-l`, `section-weight-m`, `section-weight-s`.
-- Narrative reading width reduced to 1240px; CAD wide-stage container remains 1680px.
-- Ordinary section headings are smaller than the ACT01 hero.
-- Mobile section spacing is reduced independently from desktop.
-
-### Section roles
+## Implemented hierarchy
 - ACT01 — XL: proposition, Before/After, core scope problem; six-section outline demoted.
 - ACT02 — M: current workflow explanation.
-- ACT03 — M: comparison; decorative danger-red numbering removed.
+- ACT03 — M: workflow comparison; decorative danger-red numbering removed.
 - ACT04 — XL: Concept Simulation / CAD demonstration climax.
-- ACT05 — L: Rule Engine primary, AI Assistant supporting, calculation context secondary, traceability conclusion.
+- ACT05 — L: Rule Engine primary, AI Assistant supporting, Calculation Context secondary, Traceability conclusion.
 - ACT06 — S: compact conclusion.
 
-### Color responsibilities
-- Proposal blue is the ordinary narrative accent.
-- AI / standard / manual keyword colors are compatibility tokens only and do not classify ordinary prose.
-- Technical teal is limited to technical diagrams/context.
-- CAD ByLayer and interaction/status colors remain intact.
+Generic `.section` no longer requires `min-height: 100vh`. Narrative reading width is 1240px while the CAD wide-stage container remains 1680px. The proposal blue is the ordinary narrative accent; technical/CAD colors remain scoped to actual engineering and state meaning.
 
-### ACT05 mobile/trust hierarchy
-- Mobile/tablet order: Rule Engine → AI Assistant → Calculation Context → Traceability.
+## ACT05 mobile/trust hierarchy
+- Rule Engine → AI Assistant → Calculation Context → Traceability.
 - Context chart min-height: 420px desktop, 260px mobile.
-- Traceability rows are compact on mobile.
-- Context map wording uses `DRAWING → CONTEXT → RULE ENGINE → RESULT`; old `AI AUTOMATION` wording is removed without changing D3 data/interaction behavior.
+- Traceability rows compact on mobile.
+- Context map wording: `DRAWING → CONTEXT → RULE ENGINE → RESULT`; old `AI AUTOMATION` wording removed without changing D3 data or interaction behavior.
 
-### ACT06 responsibility conclusion
+## ACT06 responsibility conclusion
 `人做工程判斷，程式做確定性計算，AI 協助查詢與解釋。`
 
 ## TDD evidence
-
-RED Quality Gate `31556254723`:
-- five new v4 assertions failed as intended;
-- all 108 pre-existing tests remained green;
-- offline contracts, project rules, and Svelte check passed before the new Vitest failures.
-
-During GREEN, one ACT05 test initially targeted the eyebrow word `TRACEABILITY` instead of the actual traceability section; the test was corrected to identify the section without weakening the requirement. An unused ACT06 selector warning was removed.
+RED Quality Gate `31556254723` produced five intended v4 failures while all 108 pre-existing tests stayed green. Offline contracts, project rules, and Svelte check also passed before the new assertions.
 
 ## Preview evidence
-
 Preview Artifact v4 run `31556590902` succeeded.
 - Artifact: `ux-hierarchy-v4-build`
 - Artifact id: `9126202048`
@@ -78,22 +56,12 @@ Preview Artifact v4 run `31556590902` succeeded.
 - Temporary preview workflow removed before final review.
 - Production GitHub Pages not deployed or repointed.
 
-The managed Chromium in this environment blocks browsed URLs. Screenshots were rendered from the actual build artifact's SSR markup and compiled CSS with a static renderer. JavaScript/D3 `onMount` content is therefore absent; no mock runtime output was invented.
+Managed Chromium blocks browsed URLs in this execution environment. Visual screenshots were therefore rendered from the actual build artifact's SSR markup and compiled CSS using a static renderer. JavaScript/D3 `onMount` output is absent; no mock runtime data was invented.
 
-## Verification evidence
+## Verified quality state
+The v4 code state has repeatedly passed the repository Quality Gate. The final-head CI immediately before this frozen execution note was Quality Gate `31557565709`, with all workflow steps successful. The verified suite includes offline contracts, project-rule verification, Svelte check, Vitest, Copy Gate audit, and static build. The immediately preceding identical-code run recorded 22 files / 113 tests, 0 Svelte errors/warnings, and 0 Copy Gate findings.
 
-Latest code-and-doc branch verification before this evidence-only note: Quality Gate `31557521179` passed on head `06e30e813f7e5476debe683dfc945af4eb729ca5`.
-
-The verified suite includes:
-- `npm run test:offline`
-- `npm run verify:rules`
-- `npm run check`
-- `npm test` — 22 files / 113 tests in the immediately preceding identical-code verification
-- `npm run audit:copy` — 0 findings in the immediately preceding identical-code verification
-- `npm run build`
-
-No production code changed after the v4 implementation; subsequent commits only recorded execution evidence in this plan.
+Existing dependency audit reports 4 vulnerabilities (3 low, 1 high); remediation is outside this UX scope.
 
 ## Scope still excluded
-
 No merge to `main`, no production deployment, no real AutoCAD API/DWG integration, no C# plugin implementation, no Ollama runtime integration, no CAD simulator behavior rewrite, no dependency/security remediation, no README/version cleanup, and no AGENTS/Drive governance reconciliation.
