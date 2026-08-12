@@ -1,6 +1,6 @@
-// 職責：繪製 AI 判斷所需的五層圖面上下文。
+// 職責：繪製規則計算所需的五層圖面上下文。
 // 輸入：layers[{id,label,desc,items[]}]、options。
-// 輸出：可 hover 展開細項的淺色 D3 上下文圖。
+// 輸出：可 hover 展開細項的淺色 D3 計算上下文圖。
 import * as d3 from 'd3';
 import { readCssToken, readDuration } from './chartUtils.js';
 
@@ -21,7 +21,7 @@ export function renderContextMap(container, layers, options) {
     technical: readCssToken(container, '--technical')
   };
   const duration = readDuration(container, '--duration-fast');
-  const svg = d3.select(container).selectAll('svg').data([layers]).join('svg').attr('viewBox', `0 0 ${width} ${height}`).attr('role', 'img').attr('aria-label', 'AI 圖面上下文五層結構');
+  const svg = d3.select(container).selectAll('svg').data([layers]).join('svg').attr('viewBox', `0 0 ${width} ${height}`).attr('role', 'img').attr('aria-label', '圖面計算上下文五層結構');
   svg.selectAll('*').remove();
   svg.append('rect').attr('width', width).attr('height', height).attr('fill', palette.overlay);
   const layerGroups = svg.selectAll('g.context-layer').data(layers).join('g').attr('class', 'context-layer').attr('transform', (_, index) => `translate(${42 + index * 24},${38 + index * 88})`).style('cursor', 'default');
@@ -36,5 +36,5 @@ export function renderContextMap(container, layers, options) {
     d3.select(this).select('rect').transition().duration(duration).attr('stroke', layer.id === layers.length ? palette.technical : palette.border);
     d3.select(this).select('.detail').transition().duration(duration).attr('fill', palette.muted);
   });
-  svg.append('text').attr('x', 42).attr('y', 500).attr('fill', palette.foreground).text('DRAWING → CONTEXT → AI AUTOMATION → REPORT');
+  svg.append('text').attr('x', 42).attr('y', 500).attr('fill', palette.foreground).text('DRAWING → CONTEXT → RULE ENGINE → RESULT');
 }
