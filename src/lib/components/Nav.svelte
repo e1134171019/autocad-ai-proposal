@@ -63,7 +63,7 @@
     nav { padding-inline: var(--space-2); }
     .brand { max-width: 210px; }
     .menu-toggle { display: inline-flex; }
-    .links { position: absolute; inset: var(--nav-height) 0 auto; display: none; gap: 0; padding: var(--space-1) var(--space-2) var(--space-2); border-bottom: var(--line-thin) solid var(--border-strong); background: var(--bg-surface); box-shadow: 0 12px 28px rgb(15 23 42 / 8%); }
+    .links { position: absolute; inset: var(--nav-height) 0 auto; display: none; gap: 0; padding: var(--space-1) var(--space-2) var(--space-2); border-bottom: var(--line-thin) solid var(--border-strong); background: var(--bg-surface); }
     .links.open { display: grid; }
     .links a { display: flex; align-items: center; min-height: 48px; padding: 0 var(--space-2); border-bottom: var(--line-thin) solid var(--border); font-size: .86rem; }
     .links a:last-child { border-bottom: 0; }
