@@ -1,11 +1,11 @@
-/* 職責：定義 v5.9.3 Light-first、淺灰 CAD 模型空間、中階工程線型、AI-DIM 與 0.5× 播放 Token。 */
+/* 職責：定義 v4 Light-first 提案色彩、section 權重、淺灰 CAD 模型空間與動畫 Token。 */
 /* 輸入：全站元件與 D3 圖表的 var() 引用。 */
-/* 輸出：暖米白提案介面、深色 CAD 框架、淺灰模型空間與一致互動基準。 */
+/* 輸出：暖白敘事區、單一主要 accent、獨立 CAD 工程語意色與不等權 section 間距。 */
 :root {
-  --background: #fafaf8;
+  --background: #faf9f6;
   --bg-surface: #ffffff;
-  --bg-overlay: #f1f0ed;
-  --bg-subtle: #f8f7f4;
+  --bg-overlay: #f3f2ee;
+  --bg-subtle: #f7f6f2;
   --foreground: #0f172a;
   --text-secondary: #475569;
   --text-muted: #94a3b8;
@@ -14,18 +14,22 @@
   --primary-hover: #1d4ed8;
   --primary-subtle: #eff6ff;
   --primary-foreground: #ffffff;
-  --technical: #0d9488;
-  --technical-subtle: #f0fdfa;
+
+  /* technical 僅供真正的技術圖、計算上下文或 CAD 鄰接狀態使用，不作第二品牌色。 */
+  --technical: #0f766e;
+  --technical-subtle: #f4f7f6;
   --success: #15803d;
   --warning: #b45309;
   --danger: #dc2626;
+
+  /* 相容 Token：一般敘事不得靠這三個顏色分類 AI／標準／人工。 */
   --keyword-ai: #2457e6;
   --keyword-standard: #16803c;
   --keyword-manual: #b45309;
-  --border: #e2e8f0;
-  --border-strong: #cbd5e1;
+  --border: #e2e4e7;
+  --border-strong: #c9cdd3;
 
-  /* CAD 框架維持深色；模型空間刻意使用淺灰，優先確保提案投影與區域辨識。 */
+  /* CAD 框架維持深色；模型空間使用淺灰，工程辨識由 ByLayer 與狀態色負責。 */
   --cad-chrome-background: #1c2229;
   --cad-toolbar-background: #303844;
   --cad-panel-background: #252b32;
@@ -36,7 +40,6 @@
   --cad-canvas-background: #e7e8e5;
   --cad-canvas-grid: #d3d6d2;
 
-  /* 建築底圖採低彩度中性色；CAD 辨識感由線型與 Hatch 建立，而非高密度彩色圖層。 */
   --cad-building-primary: #66717b;
   --cad-building-secondary: #9ba3aa;
   --cad-layer-wall: #66717b;
@@ -47,7 +50,7 @@
   --cad-layer-brace: #ffffff;
   --cad-layer-component: #7c858d;
 
-  /* 本次計算與輸出角色。 */
+  /* 真正具有工程意義的計算／輸出角色色。 */
   --cad-layer-exterior: #3d7a3a;
   --cad-layer-shaft: #c65d21;
   --cad-layer-dimension: #d62828;
@@ -65,9 +68,15 @@
   --cad-result-secondary: #cbd5e1;
   --cad-result-value: #bfdbfe;
 
-  --content-standard-max-width: 1680px;
+  /* 敘事閱讀寬度收斂；CAD 保持寬版舞台。 */
+  --content-standard-max-width: 1240px;
   --content-wide-max-width: 1680px;
   --content-side-padding: 32px;
+  --section-space-xl: 96px;
+  --section-space-l: 80px;
+  --section-space-m: 64px;
+  --section-space-s: 48px;
+
   --cad-toolbar-height: 32px;
   --cad-ribbon-height: 92px;
   --cad-command-height: 24px;
