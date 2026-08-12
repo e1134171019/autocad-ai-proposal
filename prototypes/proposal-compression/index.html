@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="robots" content="noindex,nofollow" />
+  <title>AI 施工圖驗算提案｜Comparison Prototype</title>
+  <link rel="stylesheet" href="./prototype.css" />
+</head>
+<body>
+  <header class="prototype-bar" aria-label="Prototype 狀態">
+    <strong>COMPARISON PROTOTYPE</strong>
+    <span>formal_project: false</span>
+    <span class="prototype-note">敘事與資訊密度比較用，不是正式網站</span>
+  </header>
+
+  <nav class="act-nav" aria-label="提案章節">
+    <div class="nav-inner">
+      <a href="#act-01" data-act="act-01" class="active"><span>01</span>提案</a>
+      <a href="#act-02" data-act="act-02"><span>02</span>現況</a>
+      <a href="#act-03" data-act="act-03"><span>03</span>難點</a>
+      <a href="#act-04" data-act="act-04"><span>04</span>方案</a>
+      <a href="#act-05" data-act="act-05"><span>05</span>規則</a>
+      <a href="#act-06" data-act="act-06"><span>06</span>下一步</a>
+    </div>
+  </nav>
+
+  <main>
+    <section id="act-01" class="act act-hero" data-act-section>
+      <div class="inner hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">ACT 01 / AI-ASSISTED AUTOCAD PROPOSAL</p>
+          <h1>AI 施工圖驗算提案</h1>
+          <p class="hero-lead">把施工範圍、長度整理、數量清點與結果查詢，整合進既有 AutoCAD 作業流程。</p>
+          <p class="hero-support">工程人員判斷施工位置，程式依範圍、圖層與公司規則整理結果，AI 助理協助查詢、解釋與摘要。</p>
+        </div>
+
+        <div class="cad-hero" aria-label="施工圖驗算概念示意">
+          <div class="cad-topline"><span>A-03 / 6F</span><span>Rev. B</span></div>
+          <div class="cad-canvas">
+            <div class="cad-outline building-a"></div>
+            <div class="cad-outline building-b"></div>
+            <div class="cad-shaft shaft-a"></div>
+            <div class="cad-shaft shaft-b"></div>
+            <div class="cad-selection"></div>
+            <span class="cad-tag tag-1">AI-EXTERIOR</span>
+            <span class="cad-tag tag-2">AI-SHAFT</span>
+          </div>
+          <div class="cad-status"><span>Selection Boundary</span><strong>6F 整層施工範圍</strong></div>
+        </div>
+      </div>
+
+      <div class="inner workflow-compare" aria-label="目前流程與提案流程">
+        <div class="compare-row current">
+          <span class="compare-label">現在</span>
+          <strong>繪圖 → 點線 → 看長度 → 記錄 → 加總 → 清點</strong>
+        </div>
+        <div class="compare-row proposed">
+          <span class="compare-label">提案</span>
+          <strong>繪圖 → 框選範圍 → 系統依規則整理 → AI 助理查詢 → 人員確認</strong>
+        </div>
+      </div>
+
+      <div class="inner hero-bridge">
+        <p>但真正的問題，不只是把數字加起來。</p>
+        <a href="#act-02">先看目前一張施工圖怎麼完成 <span aria-hidden="true">↓</span></a>
+      </div>
+    </section>
+
+    <section id="act-02" class="act act-workflow" data-act-section>
+      <div class="inner-wide">
+        <header class="section-heading compact">
+          <p class="eyebrow">ACT 02 / CURRENT MANUAL WORKFLOW</p>
+          <h2>目前施工圖怎麼完成</h2>
+          <p>先把現況流程走完整：從圖面、施工範圍與繪製，到逐段查看、記錄、加總、數量換算與最後整理。</p>
+        </header>
+        <div id="current-stepper" class="stepper-root" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <section id="act-03" class="act act-problem" data-act-section>
+      <div class="inner problem-layout">
+        <header class="section-heading">
+          <p class="eyebrow">ACT 03 / SCOPE CONTROL</p>
+          <h2>真正問題不是加總，而是哪些物件該算</h2>
+          <p>同一張 DWG 可能同時存在不同樓層、施工區域、版本與參考物件。範圍沒有先定清楚，後面的長度與數量就沒有一致的計算基準。</p>
+        </header>
+
+        <div class="scope-demo" aria-label="不同樓層區域與版本混合示意">
+          <div class="scope-toolbar"><span>DWG / A-03</span><span>Layers + Versions</span></div>
+          <div class="scope-canvas">
+            <div class="sheet sheet-4f"><span>4F</span></div>
+            <div class="sheet sheet-6f active"><span>6F</span><b>本次</b></div>
+            <div class="sheet sheet-rf"><span>RF</span></div>
+            <div class="scope-box"><span>Selection Boundary</span></div>
+            <span class="object-pill exterior">外部</span>
+            <span class="object-pill shaft">深井</span>
+            <span class="object-pill reference">參考物件</span>
+            <span class="object-pill old">舊版本</span>
+          </div>
+          <div class="scope-result"><span>本次計算條件</span><strong>A-03 / 6F / Rev. B / 框選範圍內</strong></div>
+        </div>
+      </div>
+
+      <div class="inner risk-block">
+        <div class="risk-grid" aria-label="現行流程六項風險">
+          <article><span>01</span><p>遺漏部分線段或重複計算</p></article>
+          <article><span>02</span><p>施工範圍認定不一致</p></article>
+          <article><span>03</span><p>圖層、標註與幾何尺寸不一致</p></article>
+          <article><span>04</span><p>多張圖面或多區域混合計算</p></article>
+          <article><span>05</span><p>結果缺少可追溯的圖面依據</p></article>
+          <article><span>06</span><p>圖面修改後必須重新人工複核</p></article>
+        </div>
+        <p class="evidence-note">這裡比較的是作業步驟與風險，不代表實測工時。實際工時差異仍需使用同一張圖面、相同條件量測後確認。</p>
+      </div>
+    </section>
+
+    <section id="act-04" class="act act-solution" data-act-section>
+      <div class="inner-wide">
+        <div class="simulation-boundary">
+          <strong>Concept Simulation｜提案操作示意</strong>
+          <p>以下畫面用來說明預計的 AutoCAD 操作流程與介面概念，不代表 AutoCAD API／實際 DWG 整合已完成，也不是正式產品驗證結果。</p>
+        </div>
+        <header class="section-heading compact">
+          <p class="eyebrow">ACT 04 / PROPOSED WORKFLOW</p>
+          <h2>AI 輔助驗算流程怎麼操作</h2>
+          <p>保留工程人員的施工判斷與繪製，把標準圖層、框選邊界、確定性計算、結果查詢與確認串成同一條流程。</p>
+        </header>
+        <div id="proposed-stepper" class="stepper-root" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <section id="act-05" class="act act-trust" data-act-section>
+      <div class="inner">
+        <header class="section-heading trust-heading">
+          <p class="eyebrow">ACT 05 / CALCULATION & AI BOUNDARY</p>
+          <h2>結果怎麼算、AI 助理能做什麼</h2>
+          <p class="trust-line">程式依框選範圍、標準圖層與公司規則計算；AI 助理使用已完成的結果協助查詢、解釋與整理，最後由人員確認。</p>
+        </header>
+
+        <div class="responsibility-strip" role="group" aria-label="責任分工">
+          <button type="button" class="responsibility-card active" data-responsibility="human" aria-expanded="true">
+            <span>01 / HUMAN</span>
+            <strong>工程判斷與確認</strong>
+            <small>判斷施工位置、完成繪製、確認結果</small>
+          </button>
+          <button type="button" class="responsibility-card" data-responsibility="rule" aria-expanded="false">
+            <span>02 / C# RULE ENGINE</span>
+            <strong>確定性計算</strong>
+            <small>篩選、分類、長度、數量、忽略原因</small>
+          </button>
+          <button type="button" class="responsibility-card" data-responsibility="ai" aria-expanded="false">
+            <span>03 / AI ASSISTANT</span>
+            <strong>查詢、解釋與摘要</strong>
+            <small>只使用已完成的計算結果</small>
+          </button>
+        </div>
+
+        <div class="responsibility-detail" data-detail="human">
+          <p class="detail-kicker">HUMAN</p>
+          <ul>
+            <li>判斷施工位置與本次施工範圍</li>
+            <li>依圖面完成施工線繪製</li>
+            <li>確認系統結果與最終輸出</li>
+          </ul>
+        </div>
+        <div class="responsibility-detail" data-detail="rule" hidden>
+          <p class="detail-kicker">C# / RULE ENGINE</p>
+          <ul>
+            <li>依框選範圍與標準圖層篩選物件</li>
+            <li>讀取 CAD 物件與幾何資料</li>
+            <li>分類、加總並依公司規則換算數量</li>
+            <li>保留計算依據與忽略原因</li>
+          </ul>
+        </div>
+        <div class="responsibility-detail" data-detail="ai" hidden>
+          <p class="detail-kicker">AI ASSISTANT</p>
+          <ul>
+            <li>查詢已完成的計算結果</li>
+            <li>解釋分類、忽略原因與套用規則</li>
+            <li>摘要目前施工區域的長度、數量與異常項目</li>
+            <li>整理可追溯紀錄與報告說明</li>
+          </ul>
+        </div>
+
+        <div class="traceability-panel">
+          <div>
+            <p class="eyebrow">TRACEABILITY</p>
+            <h3>每筆結果回到圖面與計算依據</h3>
+            <p>未計入的物件也保留原因，讓結果不是只剩一個總數。</p>
+          </div>
+          <div class="trace-chain" aria-label="可追溯欄位">Object → Layer → Selection Boundary → Rule → Result → Ignored Reason</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="act-06" class="act act-summary" data-act-section>
+      <div class="inner">
+        <header class="section-heading summary-heading">
+          <p class="eyebrow">ACT 06 / ORGANIZATIONAL VALUE</p>
+          <h2>把工程經驗變成可重複的作業規則</h2>
+          <p class="responsibility-line">人做工程判斷，程式做確定性計算，AI 協助查詢與解釋。</p>
+        </header>
+
+        <div class="progression" aria-label="工程經驗系統化路徑">
+          <div><span>01</span><strong>經驗規則化</strong><p>把圖面條件、判斷邏輯與計算方式明確化。</p></div>
+          <div><span>02</span><strong>作業標準化</strong><p>讓不同樓層、區域與後續專案沿用相同基準。</p></div>
+          <div><span>03</span><strong>知識系統化</strong><p>讓規則、結果與依據可以保存、追溯與持續累積。</p></div>
+        </div>
+        <p class="progression-line">經驗規則化 → 作業標準化 → 知識系統化</p>
+
+        <aside class="next-step" aria-labelledby="next-step-title">
+          <p class="next-label">PROPOSED NEXT ACTION / 尚未執行</p>
+          <h3 id="next-step-title">下一步｜用實際施工圖確認驗證範圍</h3>
+          <ol>
+            <li><span>01</span>提供實際施工圖</li>
+            <li><span>02</span>確認圖層與計算規則</li>
+            <li><span>03</span>確認驗證範圍</li>
+            <li><span>04</span>比對現行流程與提案結果</li>
+            <li><span>05</span>確認正式開發內容</li>
+          </ol>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer class="prototype-footer">
+    <strong>comparison_prototype</strong>
+    <span>formal_project: false · no deployment · no production claim</span>
+  </footer>
+
+  <script src="./prototype.js"></script>
+</body>
+</html>
