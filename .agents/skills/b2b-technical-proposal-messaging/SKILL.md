@@ -38,13 +38,24 @@ Before rewriting a section, define: Section Purpose, Reader Question, Source Fac
 
 Prefer concrete customer situations and actions over adjectives. Attribute deterministic calculation, rule evaluation, geometry, safety logic, and exact quantities to the actual responsible system. AI may be prominent only where its real role is explicit.
 
+## Proposal Compression
+
+Internal analysis may stay complete; frontstage proposal content must stay decision-relevant. After each Section Content Contract, derive one dominant customer-facing message and classify the section's `Frontstage Payload` as:
+
+- `Must show` — required for understanding, trust, or the next decision.
+- `Evidence carries` — detail already communicated by an interaction, simulator, chart, table, or traceability view; prose should interpret rather than repeat it in full.
+- `Background only` — useful internal analysis that does not belong in normal frontstage copy.
+- `Remove or move` — duplicate, premature, unsupported, or misplaced content.
+
+Default first-layer shape is `Title → short lead → primary interaction/evidence → necessary supporting detail`, not a fixed word count or section template. Preserve meaningful workflow steps, engineering conditions, evidence status, claim limits, traceability, and Human / Program / AI responsibility boundaries; `shorter` is never a reason to remove engineering meaning.
+
 ## Titles Are Downstream
 
 Titles come after the Section Content Contract. Generate multiple frames and score clarity, relevance, value, differentiation, credibility, title-body fit, and conversion fit. A promotional title that misrepresents the body loses.
 
 ## Cross-Section Review
 
-Check narrative progression, duplication, premature conclusions, terminology, unsupported claims, responsibility drift, concept/demo wording, title-body fit, and missing commercial action. Keep `current-state diagnosis` or `source fact` separate from every `strategic recommendation` or `proposed change`.
+Check narrative progression, duplication, premature conclusions, terminology, unsupported claims, responsibility drift, concept/demo wording, title-body fit, missing commercial action, and compression failures: `analysis leakage` (internal analysis exposed without a customer decision need), `over-explanation` (prose repeats interaction/evidence), and `message duplication` (the same major conclusion is fully consumed in multiple sections). Assign each major insight an owner section and reduce earlier occurrences to a teaser when appropriate. Keep `current-state diagnosis` or `source fact` separate from every `strategic recommendation` or `proposed change`.
 
 ## Greenfield Route
 
