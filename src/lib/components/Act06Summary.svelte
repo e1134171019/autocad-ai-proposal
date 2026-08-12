@@ -36,7 +36,7 @@
   .responsibility-line { max-width: 900px; margin: var(--space-3) 0 0; color: var(--foreground); font: 600 clamp(1.2rem, 2vw, 1.65rem)/1.45 var(--font-display); letter-spacing: -.02em; }
   .summary-copy { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4); margin-top: var(--space-4); padding-top: var(--space-4); border-top: var(--line-thin) solid var(--border-strong); }
   .summary-copy p { margin: 0; color: var(--text-secondary); font-size: clamp(.98rem, 1.2vw, 1.08rem); }
-  .keyword-ai, .keyword-standard, .keyword-manual { font-weight: 700; }
+  .keyword-standard, .keyword-manual { font-weight: 700; }
   .progression { display: grid; grid-template-columns: repeat(3, 1fr); margin-top: var(--space-4); border-top: var(--line-thin) solid var(--border-strong); border-bottom: var(--line-thin) solid var(--border-strong); }
   .progression div { display: flex; align-items: center; gap: var(--space-2); padding: var(--space-2) 0; }
   .progression div + div { padding-left: var(--space-3); border-left: var(--line-thin) solid var(--border); }
