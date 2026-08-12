@@ -1,0 +1,32 @@
+name: Preview Artifact v4
+
+on:
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build-preview:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          cache: npm
+      - name: Install dependencies
+        run: npm ci
+      - name: Build static site
+        run: npm run build
+      - name: Upload static preview
+        uses: actions/upload-artifact@v4
+        with:
+          name: ux-hierarchy-v4-build
+          path: build
+          if-no-files-found: error
