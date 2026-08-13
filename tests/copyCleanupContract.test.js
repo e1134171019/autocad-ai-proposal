@@ -23,18 +23,18 @@ describe('proposal copy cleanup contract', () => {
     expect(findings).toEqual([]);
   });
 
-  it('ACT 03 只說明流程差異，不把動畫包裝成工時 benchmark', () => {
+  it('ACT 03 說明目前流程問題，但不把動畫包裝成工時 benchmark', () => {
     const source = fs.readFileSync('src/lib/components/Act03Problem.svelte', 'utf8');
 
     expect(source).toContain('ACT 03 / WORKFLOW COMPARISON');
-    expect(source).toContain('現行人工流程與外掛流程差異');
-    expect(source).toContain('不代表實測工時');
-    expect(source).toContain('實際工時差異仍需用同一張圖面、相同條件量測後確認');
+    expect(source).toContain('目前流程的問題');
+    expect(source).toContain('這裡比較的是作業方式與可能發生的風險');
+    expect(source).toContain('實際工時差異仍需用相同圖面與相同條件量測');
     expect(source).not.toMatch(/TIME VARIANCE|平均工時|處理速度更快|更穩定|更接近平均值/);
   });
 
   it('模糊流程句改成具體行為', () => {
-    expect(heroContent.sections[3].paragraphs).toContain('目前的作業流程從原始 CAD 圖面開始。');
+    expect(heroContent.sections[3].paragraphs).toContain('下一章完整呈現客戶目前的施工圖流程，作為後續方案比較基準。');
     expect(futureFlowSteps.find((step) => step.id === 6)?.desc).not.toContain('進行作業');
     expect(futureFlowSteps.find((step) => step.id === 7)?.label).toBe('框選範圍定義本次計算區域');
     expect(futureFlowSteps.find((step) => step.id === 7)?.desc).not.toContain('進行分類');
