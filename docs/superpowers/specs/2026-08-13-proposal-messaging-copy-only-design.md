@@ -72,6 +72,10 @@ The implementation MUST NOT change:
 - ACT04 step count, order, labels or descriptions
 - `currentFlowNodes`
 - `futureFlowSteps`
+- `deterministicResponsibilities`
+- `assistantResponsibilities`
+- `intelligenceLayers`
+- `risks`
 - deterministic calculation data
 - layer data
 - quantity/length data
@@ -85,14 +89,14 @@ ACT02 remains 9 steps. ACT04 remains 12 steps.
 
 Only textual literals or content fields in the following source files may change:
 
-- `src/lib/components/Nav.svelte` — chapter labels/brand text only
+- `src/lib/components/Nav.svelte` — six `navItems` labels only; brand text remains unchanged
 - `src/lib/components/Act01Hero.svelte` — H1, lead, workflow comparison text, problem bridge copy, proposal-outline copy only
 - `src/lib/components/Act02Flow.svelte` — `CadProcess` title/lead/highlight text only
 - `src/lib/components/Act03Problem.svelte` — section title/lead only
 - `src/lib/components/Act04Solution.svelte` — `CadProcess` title/lead/highlight text only; Concept Simulation disclaimer is protected
-- `src/lib/components/Act05Intelligence.svelte` — section title/lead and explanatory prose only; responsibility arrays/data and chart are protected
+- `src/lib/components/Act05Intelligence.svelte` — section title/lead only
 - `src/lib/components/Act06Summary.svelte` — section title and summary prose only; no CTA or structural change
-- `src/lib/content/siteContent.js` — `heroContent` only; workflow arrays and engineering data are protected
+- `src/lib/content/siteContent.js` — `heroContent.sections` only; top-level unused hero fields, workflow arrays and engineering data are protected
 
 A test file and design/plan/evidence documents may be added outside `src/**`.
 
@@ -195,14 +199,24 @@ Problem bridge becomes a concise calculation precondition rather than the full A
 4. `先看現況`
    - `下一章先完整走過目前施工圖流程，作為後面比較外掛方案的基準。`
 
-Proposal-outline copy is also shortened to describe the six existing ACTs without adding new sections.
+Proposal outline retains the existing six-card structure and uses exactly:
+
+1. `客戶需求` — `這次要處理哪些 AutoCAD 驗算工作。`
+2. `目前流程` — `目前施工圖從判斷、繪製到加總怎麼完成。`
+3. `流程差異` — `人工流程與外掛流程的作業差異與風險。`
+4. `操作流程` — `外掛在 AutoCAD 裡預計怎麼操作。`
+5. `計算與 AI` — `結果怎麼算，以及 AI 助理負責什麼。`
+6. `專案總結` — `最後留下哪些可重複使用的作業規則。`
+
+The outline heading `這份提案會說明六件事` remains unchanged.
 
 ### ACT02 — 目前施工圖怎麼完成
 
-Only the wrapper title/lead changes.
+Only the wrapper title/lead/highlight strings change.
 
 - title: `目前施工圖怎麼完成`
 - lead: `先完整走過目前施工圖流程：判斷施工範圍、逐段繪製、查看長度、標註、加總、換算數量，再整理圖面。`
+- lead highlights: `施工範圍`, `逐段繪製`, `加總`, `換算數量`
 
 The 9 step labels/descriptions are unchanged.
 
@@ -218,7 +232,9 @@ Proof boundary: no speed, ROI, percentage or measured-error claim is added.
 ### ACT04 — AI 輔助驗算流程怎麼操作
 
 - title: `AI 輔助驗算流程怎麼操作`
+- title highlight: `AI 輔助驗算`
 - lead: `工程人員負責施工判斷與繪製；外掛以標準圖層與框選範圍整理計算內容，程式計算，AI 助理查詢與解釋結果。`
+- lead highlights: `工程人員`, `標準圖層`, `框選範圍`, `程式計算`, `AI 助理`
 
 The 12 steps, animation, selection gates and Concept Simulation disclaimer remain unchanged.
 
@@ -227,7 +243,7 @@ The 12 steps, animation, selection gates and Concept Simulation disclaimer remai
 - title: `結果怎麼算、AI 助理能做什麼`
 - lead: `框選範圍與標準圖層先界定本次計算內容；C# 規則引擎負責篩選、分類、長度與數量，AI 助理只查詢、解釋與摘要已完成的結果。`
 
-The deterministic-responsibility list, assistant-responsibility list, context map and traceability fields remain unchanged unless a purely textual correction is required to keep title/body consistency. No responsibility ownership may move from Program to AI.
+The deterministic-responsibility list, assistant-responsibility list, context map, traceability heading/prose and traceability fields remain unchanged. No responsibility ownership may move from Program to AI.
 
 ### ACT06 — 把工程經驗變成可重複的作業規則
 
@@ -246,7 +262,7 @@ Progression remains unchanged:
 
 `經驗規則化 → 作業標準化 → 知識系統化`
 
-Recommended closing quote:
+Closing quote becomes exactly:
 
 `讓工程經驗可以保存、沿用、執行與追溯。`
 
@@ -254,7 +270,7 @@ No NEXT STEP or CTA is added.
 
 ## Navigation copy
 
-Navigation remains structurally unchanged. Only labels may be aligned with the chapter roles:
+Navigation structure and brand remain unchanged. The six `navItems` labels become exactly:
 
 - `提案概要`
 - `目前流程`
@@ -263,7 +279,7 @@ Navigation remains structurally unchanged. Only labels may be aligned with the c
 - `計算與 AI`
 - `專案總結`
 
-Brand may remain `AutoCAD 驗算提案` to preserve compact navigation width.
+Brand remains `AutoCAD 驗算提案`.
 
 ## Claim and responsibility boundary
 
