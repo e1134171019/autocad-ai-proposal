@@ -21,8 +21,8 @@
 <section id="act-03" class="section section-weight-m problem" bind:this={sectionElement}>
   <div class="section-inner">
     <p class="eyebrow">ACT 03 / WORKFLOW COMPARISON</p>
-    <h2 class="section-title">現行人工流程與外掛流程差異</h2>
-    <p class="section-lead">這裡比較的是作業步驟，不代表實測工時。人工流程需要逐段查看、記錄、加總與複核；導入外掛後，系統依標準圖層取得、分類與整理結果。實際工時差異仍需用同一張圖面、相同條件量測後確認。</p>
+    <h2 class="section-title">目前流程的問題</h2>
+    <p class="section-lead">現行作業需要重複點選物件、查看長度、記錄、加總與複核。圖面同時存在不同樓層、施工區域或版本時，也必須確認哪些物件屬於本次計算範圍。這裡比較的是作業方式與可能發生的風險，實際工時差異仍需用相同圖面與相同條件量測。</p>
     <div class="chart" bind:this={chartContainer}></div>
     <ol class:visible={isVisible}>
       {#each risks as risk, index}
