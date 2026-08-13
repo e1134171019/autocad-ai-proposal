@@ -69,8 +69,12 @@ assert.ok(futureFlowSteps[3].desc.includes('外部施工線與深井仍由繪圖
 assert.ok(futureFlowSteps[3].desc.includes('AI 不代替繪圖'));
 assert.ok(futureFlowSteps[3].desc.includes('自動讀取物件長度並帶入尺寸標註'));
 assert.ok(summary.includes('ACT 06 / PROJECT SUMMARY'));
-assert.ok(summary.includes('規則化、標準化與系統化'));
-assert.ok(summary.includes('把繪圖人員的工程經驗，轉成公司可以保存、團隊可以沿用、程式可以執行、AI 可以使用的標準作業系統。'));
+assert.ok(summary.includes('專案效益與預期成果'));
+assert.ok(summary.includes('實際節省的工時與改善幅度目前沒有量測數據'));
+assert.ok(summary.includes('經驗規則化'));
+assert.ok(summary.includes('作業標準化'));
+assert.ok(summary.includes('知識系統化'));
+assert.ok(summary.includes('將繪圖人員的工程經驗整理成公司可以保存、團隊可以沿用、程式可以執行的作業規則。'));
 assert.ok(!summary.includes('NEXT STEP'));
 assert.ok(!summary.includes('重新檢視現況流程'));
 assert.ok(nav.includes("'專案總結'"));
