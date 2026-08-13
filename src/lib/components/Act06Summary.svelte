@@ -11,7 +11,7 @@
     <div class="summary-copy">
       <p>
         這套方案的設計目標，是減少逐段查值、人工記錄、加總與重複複核，把施工範圍、圖層與計算方式整理成
-        <strong class="keyword-standard">固定規則</strong>。目前沒有工時與改善幅度的前後量測數據，後續需使用相同施工圖與相同條件進行比較。
+        <strong class="keyword-standard">固定規則</strong>。目前沒有工時的前後量測數據，後續需使用相同施工圖與相同條件比較作業時間。
       </p>
       <p>
         <strong class="keyword-manual">繪圖人員負責工程判斷與最終確認</strong>；程式依標準圖層、框選範圍與公司規則計算，AI 助理使用既有結果協助查詢、解釋與摘要。
