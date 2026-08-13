@@ -51,7 +51,7 @@ const guidedStep = futureFlowSteps[3];
 if (!guidedStep.highlights.some((item) => item.text === '逐段繪製' && item.tone === 'manual')) violations.push('ACT 04 STEP 04: 人工逐段繪製未套用人工色');
 if (!guidedStep.highlights.some((item) => item.text === '自動讀取物件長度並帶入尺寸標註' && item.tone === 'ai')) violations.push('ACT 04 STEP 04: AI 後處理未套用 AI 色');
 if (!guidedStep.highlights.some((item) => item.text === '標準圖層' && item.tone === 'standard')) violations.push('ACT 04 STEP 04: 標準圖層未套用標準色');
-['ACT 06 / PROJECT SUMMARY', '專案效益與預期成果', '目前沒有工時與改善幅度的前後量測數據', '經驗規則化', '作業標準化', '知識系統化', '將繪圖人員的工程經驗整理成公司可以保存、團隊可以沿用、程式可以執行的作業規則。'].forEach((phrase) => { if (!summary.includes(phrase)) violations.push(`Act06Summary.svelte: 缺少 ${phrase}`); });
+['ACT 06 / PROJECT SUMMARY', '專案效益與預期成果', '目前沒有工時的前後量測數據', '經驗規則化', '作業標準化', '知識系統化', '將繪圖人員的工程經驗整理成公司可以保存、團隊可以沿用、程式可以執行的作業規則。'].forEach((phrase) => { if (!summary.includes(phrase)) violations.push(`Act06Summary.svelte: 缺少 ${phrase}`); });
 ['NEXT STEP', '準備好從一張代表性施工圖開始了嗎？', '重新檢視現況流程'].forEach((phrase) => { if (summary.includes(phrase)) violations.push(`Act06Summary.svelte: 仍含舊 CTA ${phrase}`); });
 if (!nav.includes("'專案總結'")) violations.push('Nav.svelte: 第六章未改為專案總結');
 if (!svelteConfig.includes("process.env.GITHUB_REPOSITORY?.split('/')[1]") || !svelteConfig.includes('base: githubPagesBase')) violations.push('svelte.config.js: GitHub Pages base path 設定不完整');
