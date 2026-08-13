@@ -19,9 +19,9 @@ const CONTEXT_MAP_PATH = 'src/lib/charts/contextMap.js';
 const TOKENS_PATH = 'src/lib/tokens.css';
 
 describe('UX hierarchy client comprehension contract', () => {
-  it('首屏先說明工具用途，再出現次要六章導覽', () => {
+  it('首屏先說明我們的提案，再出現次要六章導覽', () => {
     const hero = read(HERO_PATH);
-    const proposition = hero.indexOf('AutoCAD 施工圖長度與數量自動驗算');
+    const proposition = hero.indexOf('<h1>我們的提案</h1>');
     const outline = hero.indexOf('這份提案會說明六件事');
     expect(proposition).toBeGreaterThanOrEqual(0);
     expect(outline).toBeGreaterThanOrEqual(0);
@@ -30,23 +30,24 @@ describe('UX hierarchy client comprehension contract', () => {
 
   it('首屏用具體 Before / After 說明現況與外掛流程', () => {
     const hero = read(HERO_PATH);
-    expect(hero).toContain('保留繪圖人員的工程判斷，把逐段查看長度、人工加總與數量清點交給外掛處理。');
+    expect(hero).toContain('繪圖人員仍負責施工位置判斷與繪製；程式負責計算，AI 助理負責結果查詢、解釋與摘要。');
     expect(hero).toContain('繪圖 → 點線 → 看長度 → 記錄 → 加總 → 清點');
-    expect(hero).toContain('繪圖 → 框選施工範圍 → 系統整理長度與數量 → 人員確認');
+    expect(hero).toContain('繪圖 → 框選施工範圍 → 程式整理長度與數量 → AI 助理查詢 → 人員確認');
   });
 
-  it('首屏提早說明真正難點是本次應計算物件的範圍', () => {
+  it('首屏先界定本次應計算物件的範圍', () => {
     const hero = read(HERO_PATH);
-    expect(hero).toContain('真正的問題不是把數字加起來，而是先確認這一次哪些物件應該算。');
+    expect(hero).toContain('先確認本次要計算的樓層、區域與物件。');
     expect(hero).toMatch(/樓層|區域|版本/);
   });
 
-  it('ACT 01 與固定導覽都不再使用舊的工時成效語意', () => {
+  it('ACT 01 不宣稱工時成效，ACT 03 保留量測邊界', () => {
     const hero = read(HERO_PATH);
+    const act03 = read(ACT03_PATH);
     const nav = read(NAV_PATH);
     expect(hero).not.toMatch(/工時差異|AI 工具處理更快|時間更穩定/);
-    expect(hero).toContain('流程差異');
-    expect(hero).toContain('不代表實測工時');
+    expect(hero).toContain('目前流程的問題');
+    expect(act03).toContain('實際工時差異仍需用相同圖面與相同條件量測');
     expect(nav).not.toContain('工時變異');
     expect(nav).toContain('流程差異');
   });
@@ -74,7 +75,7 @@ describe('UX hierarchy client comprehension contract', () => {
     const content = read(CONTENT_PATH);
     expect(intelligence).not.toContain('AI DECISION LOGIC');
     expect(intelligence).toContain('ACT 05 / CALCULATION & RESULT TRACEABILITY');
-    expect(intelligence).toContain('計算依據與結果確認');
+    expect(intelligence).toContain('系統計算方式與 AI 分工');
     expect(intelligence).toContain('C# / Rule Engine');
     expect(intelligence).toContain('AI Assistant');
     expect(content).toContain('deterministicResponsibilities');
