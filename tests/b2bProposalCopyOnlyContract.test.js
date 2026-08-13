@@ -51,8 +51,9 @@ describe('B2B 工業提案 copy-only 契約', () => {
 
   it('ACT03 與 ACT06 不把未量測效益寫成既成成果', () => {
     expect(act03).toContain('實際工時差異仍需用相同圖面與相同條件量測');
-    expect(act06).toContain('實際節省的工時與改善幅度目前沒有量測數據');
+    expect(act06).toContain('目前沒有工時與改善幅度的前後量測數據');
     expect(act06).toContain('設計目標');
+    expect(act06).not.toContain('實際節省的工時');
   });
 
   it('ACT04/05 保留程式計算與 AI 查詢解釋的責任邊界', () => {
