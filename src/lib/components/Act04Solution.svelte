@@ -13,7 +13,7 @@
       <p>以下畫面用來說明預計的 AutoCAD 操作流程與介面概念，不代表 AutoCAD API／實際 DWG 整合已完成，也不是正式產品驗證結果。</p>
     </div>
 
-    <CadProcess eyebrow="ACT 04 / PROPOSED SYSTEM" title="本團隊提出的系統方案" titleHighlights={[{ text: '本團隊提出的系統方案', tone: 'ai' }]} lead="我們把畫線、圖層、標註、框選、分類、加總與查詢整合在 AutoCAD 原生介面中。" leadHighlights={[{ text: '整合', tone: 'ai' }]} processSteps={futureFlowSteps} mode="future" />
+    <CadProcess eyebrow="ACT 04 / PROPOSED SYSTEM" title="我們的解決方案" titleHighlights={[{ text: '我們的解決方案', tone: 'ai' }]} lead="外掛先建立標準圖層，繪圖人員依工程需求判斷施工位置並完成施工線繪製。完成後以框選範圍定義本次計算區域，程式依圖層、CAD 物件與公司規則整理長度及數量，再提供結果確認與 AI 助理查詢。" leadHighlights={[{ text: '標準圖層', tone: 'standard' }, { text: '繪圖人員', tone: 'manual' }, { text: '框選範圍', tone: 'standard' }, { text: 'AI 助理', tone: 'ai' }]} processSteps={futureFlowSteps} mode="future" />
   </div>
 </section>
 
