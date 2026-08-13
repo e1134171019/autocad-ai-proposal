@@ -1,6 +1,6 @@
-<!-- 職責：以四段人話敘事建立客戶需求、目標、難點與現況入口。 -->
+<!-- 職責：先讓非技術客戶理解外掛能整理什麼，再提供六章快速導覽。 -->
 <!-- 輸入：heroContent 提案文案。 -->
-<!-- 輸出：ACT 01 六章快速目錄、閱讀段落與 ACT 02 銜接。 -->
+<!-- 輸出：ACT 01 價值主張、四個結果、範圍提示與章節導航。 -->
 <script>
   import { heroContent } from '$lib/content/siteContent.js';
 
@@ -60,22 +60,35 @@
     </nav>
 
     <div class="hero-intro">
-      <p class="eyebrow">ACT 01 / PROJECT CONTEXT</p>
+      <p class="eyebrow">ACT 01 / {heroContent.eyebrow}</p>
       <h1>{heroContent.title}</h1>
-      <div class="context-line"><span class="status-dot"></span>先說清楚客戶要什麼，再走進目前的 CAD 作業</div>
+      <div class="context-line"><span class="status-dot"></span>{heroContent.lead}</div>
     </div>
 
     <div class="narrative">
-      {#each heroContent.sections as narrativeSection}
+      {#each heroContent.outcomes as outcome, index}
         <article>
-          <span class="section-index">{narrativeSection.id}</span>
+          <span class="section-index">0{index + 1}</span>
           <div class="copy">
-            <h2>{narrativeSection.title}</h2>
-            <div>{#each narrativeSection.paragraphs as paragraph}<p>{paragraph}</p>{/each}</div>
-            {#if narrativeSection.highlight}<blockquote>{narrativeSection.highlight}</blockquote>{/if}
+            <h2>{outcome.title}</h2>
+            <div><p>{outcome.desc}</p></div>
           </div>
         </article>
       {/each}
+      <article>
+        <span class="section-index">05</span>
+        <div class="copy">
+          <h2>{heroContent.scopeNote.title}</h2>
+          <div><p>{heroContent.scopeNote.desc}</p></div>
+        </div>
+      </article>
+      <article>
+        <span class="section-index">06</span>
+        <div class="copy">
+          <h2>結果如何使用</h2>
+          <div><p>{heroContent.closing}</p></div>
+        </div>
+      </article>
     </div>
   </div>
 </section>
