@@ -4,18 +4,17 @@
 <section id="act-06" class="section section-weight-s summary">
   <div class="section-inner">
     <p class="eyebrow">ACT 06 / PROJECT SUMMARY</p>
-    <h2 class="section-title">工程經驗規則化與專案總結</h2>
+    <h2 class="section-title">專案效益與預期成果</h2>
 
     <p class="responsibility-line">人做工程判斷，程式做確定性計算，AI 協助查詢與解釋。</p>
 
     <div class="summary-copy">
       <p>
-        本專案將繪圖人員長期累積的拆圖方式、施工範圍判斷、線段與深井繪製、尺寸標註、長度計算及元件清點經驗，整理成明確的
-        <strong class="keyword-standard">圖面條件、判斷邏輯與計算規則</strong>，逐步建立可重複使用的 AutoCAD 作業流程。
+        這套方案的設計目標，是減少逐段查值、人工記錄、加總與重複複核，把施工範圍、圖層與計算方式整理成
+        <strong class="keyword-standard">固定規則</strong>。實際節省的工時與改善幅度目前沒有量測數據，後續需使用相同施工圖與相同條件進行前後比較。
       </p>
       <p>
-        <strong class="keyword-manual">繪圖人員仍負責工程判斷與最終確認</strong>；程式依標準圖層、框選範圍與公司規則處理精確的分類、長度與數量，AI 助理使用既有結果協助查詢、解釋與摘要。隨著實際案例持續累積，作業由個人經驗逐步走向
-        <strong class="keyword-standard">規則化、標準化與系統化</strong>。
+        <strong class="keyword-manual">繪圖人員負責工程判斷與最終確認</strong>；程式依標準圖層、框選範圍與公司規則計算，AI 助理使用既有結果協助查詢、解釋與摘要。
       </p>
     </div>
 
@@ -26,7 +25,7 @@
     </div>
 
     <blockquote>
-      把繪圖人員的工程經驗，轉成公司可以保存、團隊可以沿用、程式可以執行、AI 可以使用的標準作業系統。
+      將繪圖人員的工程經驗整理成公司可以保存、團隊可以沿用、程式可以執行的作業規則。
     </blockquote>
   </div>
 </section>
