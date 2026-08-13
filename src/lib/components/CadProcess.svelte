@@ -5,7 +5,7 @@
   import { createActiveSelection } from '$lib/domain/selection.js';
   import { activeSelection as activeSelectionStore } from '$lib/stores/appState.js';
   import CadDockedPanel from './CadDockedPanel.svelte';
-  let { eyebrow, title, lead, titleHighlights = [], leadHighlights = [], processSteps, mode } = $props();
+  let { eyebrow, title, lead, titleHighlights = [], leadHighlights = [], processSteps, processStages = [], mode } = $props();
   let chartContainer;
   let activeIndex = $state(0);
   let selection = $state(null);
@@ -14,6 +14,7 @@
   let selectionSequence = 0;
   const commandMap = { 'manual-inspect': '_PROPERTIES', 'manual-label-slow': '_MLEADER', 'box-select-fast': '_AI_SELECT_AREA', 'ai-query': '_AI_ASSISTANT', 'auto-label': '_AI_LENGTH', 'standard-layers': '_LAYER', 'panel-fast': '_AI_CALCULATE', 'result-three': '_AI_QUANTITY', 'pdf-preview': '_PLOT' };
   let activeStep = $derived(processSteps[activeIndex]);
+  let activeStage = $derived(processStages.find((stage) => activeStep.id >= stage.startStep && activeStep.id <= stage.endStep) ?? null);
   let requiresSelection = $derived(mode === 'future' && [6, 7, 9].includes(activeIndex));
   let isNextDisabled = $derived(activeIndex === processSteps.length - 1 || (requiresSelection && !selection) || (mode === 'future' && activeIndex === 7 && (autoStage.resultIndex ?? 0) < 5));
   let activeCommand = $derived(autoStage.command ? `_${autoStage.command}` : commandMap[activeStep.animType] ?? '_OPEN');
@@ -53,6 +54,9 @@
         <p class="section-lead">{#each leadParts as part}<span class={part.tone ? toneClass(part.tone) : ''}>{part.text}</span>{/each}</p>
       </div>
       <div class="step-detail">
+      {#if activeStage}
+        <div class="stage-context"><span>階段 {activeStage.id} / {processStages.length}</span><strong>{activeStage.label}</strong></div>
+      {/if}
       <div class="progress"><span>{String(activeStep.id).padStart(2, '0')}</span><span>/ {String(processSteps.length).padStart(2, '0')}</span></div>
       <h3>{#each labelParts as part}<span class={part.tone ? toneClass(part.tone) : ''}>{part.text}</span>{/each}</h3>
       <p>{#each descParts as part}<span class={part.tone ? toneClass(part.tone) : ''}>{part.text}</span>{/each}</p>
@@ -79,6 +83,9 @@
   .act-heading .section-title { margin-top: var(--space-2); }
   .act-heading .section-lead { max-width: 500px; margin-top: var(--space-3); }
   .step-detail { padding-top: var(--space-4); border-top: var(--line-thin) solid var(--border-strong); }
+  .stage-context { display: flex; align-items: baseline; gap: var(--space-2); margin-bottom: var(--space-2); color: var(--text-secondary); font-family: var(--font-display); }
+  .stage-context span { color: var(--text-muted); font-size: .72rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; }
+  .stage-context strong { color: var(--foreground); font-size: .9rem; font-weight: 700; }
   .progress { display: flex; gap: var(--space-1); color: var(--text-muted); font: 600 .78rem/1 var(--font-display); }
   .progress span:first-child { color: var(--primary); }
   h3 { max-width: 470px; margin: var(--space-4) 0 0; color: var(--foreground); font: 600 clamp(1.65rem, 3vw, 2.7rem)/1.18 var(--font-display); letter-spacing: -.035em; }
