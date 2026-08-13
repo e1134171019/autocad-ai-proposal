@@ -12,11 +12,14 @@ Date: 2026-08-13
 - merge: false
 - scope: six ACT titles and surrounding proposal copy only
 
-## User correction that governs this design
+## Governing user corrections
 
-The real project animation, interaction, layout and workflow are the required presentation baseline. A separately rebuilt prototype is not an acceptable representation of the intended website.
-
-Therefore this change MUST use the actual project and MUST NOT recreate, replace, simplify or retime any project animation or interaction. Only the six chapter titles and chapter copy may change.
+1. The real project animation, interaction, layout and workflow are the presentation baseline. A separately rebuilt prototype is not an acceptable representation of the intended website.
+2. This change MUST use the actual project and MUST NOT recreate, replace, simplify or retime project animation or interaction.
+3. Only the six chapter titles and surrounding chapter copy may change.
+4. User-selected title revisions:
+   - ACT01: `我們的提案`
+   - ACT02: `目前客戶的流程`
 
 ## Source readout
 
@@ -38,21 +41,11 @@ Read from `feat/ux-hierarchy-v2` before drafting:
 - `.agents/skills/b2b-technical-proposal-messaging/SKILL.md`
 - `skills/eden-engineering-copy/SKILL.md`
 
-## Approaches considered
+## Selected approach
 
-### A. Actual-project copy-only change — selected
+Use the actual project and change copy only. Keep all existing CAD/D3 animation, workflow data, layout, CSS and interaction behavior unchanged so the existing project visuals carry the explanation.
 
-Keep the real six ACT components, CAD simulator, D3 animation, workflow data, CSS and interaction behavior unchanged. Rewrite only the chapter titles and surrounding proposal copy so the existing visuals carry more of the explanation.
-
-This is the selected approach because it directly satisfies the user's correction.
-
-### B. Standalone comparison prototype — rejected
-
-Rebuild the narrative in a separate HTML prototype. This was already tried and rejected because the recreated animation/layout is not an accurate representation of the real project.
-
-### C. Full narrative/layout restructure — rejected for this scope
-
-Change components, layout blocks, interaction structure or animation semantics together with copy. This could produce a cleaner information architecture but violates the explicit copy-only constraint.
+The previously created standalone comparison prototype is rejected as a design baseline because its recreated animation/layout does not accurately represent the real project.
 
 ## Protected behavior and files
 
@@ -83,7 +76,7 @@ The implementation MUST NOT change:
 
 ACT02 remains 9 steps. ACT04 remains 12 steps.
 
-`src/AGENTS.md` also requires ACT06 to remain a PROJECT SUMMARY without NEXT STEP, question, back-link or CTA. This design therefore does not add the previously discussed commercial next-step block.
+`src/AGENTS.md` requires ACT06 to remain a PROJECT SUMMARY without NEXT STEP, question, back-link or CTA. No CTA is added in this scope.
 
 ## Allowed source-edit surface
 
@@ -96,7 +89,7 @@ Only textual literals or content fields in the following source files may change
 - `src/lib/components/Act04Solution.svelte` — `CadProcess` title/lead/highlight text only; Concept Simulation disclaimer is protected
 - `src/lib/components/Act05Intelligence.svelte` — section title/lead only
 - `src/lib/components/Act06Summary.svelte` — section title and summary prose only; no CTA or structural change
-- `src/lib/content/siteContent.js` — `heroContent.sections` only; top-level unused hero fields, workflow arrays and engineering data are protected
+- `src/lib/content/siteContent.js` — `heroContent.sections` only; workflow arrays and engineering data are protected
 
 A test file and design/plan/evidence documents may be added outside `src/**`.
 
@@ -104,84 +97,72 @@ A test file and design/plan/evidence documents may be added outside `src/**`.
 
 ### ACT01
 
-Current role: proposal orientation, current-vs-proposed summary, scope problem explanation, four background sections and six-part outline.
+Current role: proposal orientation, current-vs-proposed summary, scope precondition, four background sections and six-part outline.
 
-Problem: it currently explains the scope difficulty in detail before the reader reaches later sections. It is also the densest copy surface.
-
-Protected interaction: none beyond existing page links and current component structure.
+Copy job: establish what the team is proposing without explaining later chapters in full.
 
 ### ACT02
 
-Current role: demonstrate the actual 9-step manual workflow using the real `CadProcess` interaction.
+Current role: demonstrate the actual 9-step customer/manual workflow using the real `CadProcess` interaction.
 
-Primary semantic evidence: the 9-step interaction itself.
-
-Copy job: introduce the workflow briefly and let the interaction carry detail.
+Primary semantic evidence: the 9-step interaction itself. Wrapper copy stays short so the animation carries the detail.
 
 ### ACT03
 
-Current role and interaction: `comparisonAnim.js` compares manual process versus the proposed automated/AI-assisted flow and is followed by six risk items. It explicitly does not prove measured time savings.
+Current role and interaction: `comparisonAnim.js` compares manual process versus the proposed automated/AI-assisted flow and is followed by six risk items. It does not prove measured time savings.
 
-Important correction: because the existing animation is a workflow comparison, ACT03 must remain a workflow-difference/risk chapter. It must not be retitled as a pure scope-control chapter that no longer matches the animation.
+Because the real animation is a workflow comparison, ACT03 remains a workflow-difference/risk chapter.
 
 ### ACT04
 
 Current role: 12-step proposed-system Concept Simulation.
 
-Protected evidence boundary: the disclaimer must continue to state that it does not prove completed AutoCAD API / real DWG integration or formal product validation.
-
-Protected responsibility: engineering staff judge construction positions and draw; AI does not replace drawing.
+The disclaimer remains protected: it does not prove completed AutoCAD API / real DWG integration or formal product validation.
 
 ### ACT05
 
-Current role: explain deterministic C# Rule Engine calculation, AI Assistant query/explanation, calculation context and traceability.
-
-This is the authoritative responsibility-boundary chapter.
+Current role: explain deterministic C# Rule Engine calculation, AI Assistant query/explanation, calculation context and traceability. This is the authoritative responsibility-boundary chapter.
 
 ### ACT06
 
-Current role: project summary and organizational progression from engineering experience to reusable rules/standards/systematized knowledge.
-
-Protected rule: no CTA.
+Current role: project summary and progression from engineering experience to reusable rules, standards and systematized knowledge. No CTA.
 
 ## Narrative map
 
-The six ACTs should answer these questions in order:
+The six ACTs answer, in order:
 
-1. What is being proposed?
-2. How is the drawing work completed today?
-3. What changes between the manual and proposed workflow, and where are the risks?
+1. What are we proposing?
+2. What is the customer's current workflow?
+3. What differs between the manual and proposed workflow, and where are the risks?
 4. How would the proposed workflow operate in AutoCAD?
 5. How are results calculated, and what does AI actually do?
 6. What reusable engineering capability remains after the project?
 
-This preserves the existing animation sequence rather than forcing a new narrative onto unrelated visuals.
+## Chapter titles
 
-## Recommended chapter titles
-
-| ACT | Recommended title | Reason |
+| ACT | Title | Status |
 |---|---|---|
-| 01 | `AI 施工圖驗算提案` | Immediate proposal framing; AutoCAD remains in the supporting copy. |
-| 02 | `目前施工圖怎麼完成` | Directly matches the 9-step current workflow interaction. |
-| 03 | `人工流程與外掛流程，差在哪裡` | Matches the existing comparison animation and six risk items. |
-| 04 | `AI 輔助驗算流程怎麼操作` | Keeps AI visible while avoiding the claim that AI performs all deterministic work. |
-| 05 | `結果怎麼算、AI 助理能做什麼` | Directly states the technical-review question and responsibility split. |
-| 06 | `把工程經驗變成可重複的作業規則` | Matches the existing project-summary progression without adding CTA. |
+| 01 | `我們的提案` | User-selected |
+| 02 | `目前客戶的流程` | User-selected |
+| 03 | `人工流程與外掛流程，差在哪裡` | Current recommendation |
+| 04 | `AI 輔助驗算流程怎麼操作` | Current recommendation |
+| 05 | `結果怎麼算、AI 助理能做什麼` | Current recommendation |
+| 06 | `把工程經驗變成可重複的作業規則` | Current recommendation |
 
 ## Section content contracts
 
-### ACT01 — AI 施工圖驗算提案
+### ACT01 — 我們的提案
 
-Section purpose: establish the proposal, current target work and calculation precondition without explaining the whole site upfront.
+Section purpose: state the proposal, target work and calculation precondition without front-loading the whole site.
 
 Recommended top copy:
 
-- H1: `AI 施工圖驗算提案`
+- H1: `我們的提案`
 - Lead: `把施工範圍、長度整理、數量清點與結果查詢，整合進既有 AutoCAD 作業流程。`
 - Current row: `繪圖 → 點線 → 看長度 → 記錄 → 加總 → 清點`
 - Proposed row: `繪圖 → 框選施工範圍 → 程式整理長度與數量 → AI 助理查詢 → 人員確認`
 
-Problem bridge becomes a concise calculation precondition rather than the full ACT03 conclusion:
+Problem bridge remains a concise calculation precondition:
 
 - label: `計算前提`
 - heading: `先確認這次要算哪個樓層、區域與物件。`
@@ -199,7 +180,7 @@ Problem bridge becomes a concise calculation precondition rather than the full A
 4. `先看現況`
    - `下一章先完整走過目前施工圖流程，作為後面比較外掛方案的基準。`
 
-Proposal outline retains the existing six-card structure and uses exactly:
+Proposal outline retains the existing six-card structure:
 
 1. `客戶需求` — `這次要處理哪些 AutoCAD 驗算工作。`
 2. `目前流程` — `目前施工圖從判斷、繪製到加總怎麼完成。`
@@ -210,15 +191,15 @@ Proposal outline retains the existing six-card structure and uses exactly:
 
 The outline heading `這份提案會說明六件事` remains unchanged.
 
-### ACT02 — 目前施工圖怎麼完成
+### ACT02 — 目前客戶的流程
 
-Only the wrapper title/lead/highlight strings change.
+Only wrapper title/lead/highlight strings change.
 
-- title: `目前施工圖怎麼完成`
+- title: `目前客戶的流程`
 - lead: `先完整走過目前施工圖流程：判斷施工範圍、逐段繪製、查看長度、標註、加總、換算數量，再整理圖面。`
 - lead highlights: `施工範圍`, `逐段繪製`, `加總`, `換算數量`
 
-The 9 step labels/descriptions are unchanged.
+The 9 step labels/descriptions remain unchanged.
 
 ### ACT03 — 人工流程與外掛流程，差在哪裡
 
@@ -226,8 +207,6 @@ The 9 step labels/descriptions are unchanged.
 - lead: `這裡比較作業步驟與六類風險，不代表實測工時。人工流程需要逐段查看、記錄、加總與複核；外掛依標準圖層與計算範圍整理結果，再由人員確認。`
 
 The D3 animation and six risk labels remain unchanged.
-
-Proof boundary: no speed, ROI, percentage or measured-error claim is added.
 
 ### ACT04 — AI 輔助驗算流程怎麼操作
 
@@ -250,19 +229,19 @@ The deterministic-responsibility list, assistant-responsibility list, context ma
 - title: `把工程經驗變成可重複的作業規則`
 - responsibility line remains: `人做工程判斷，程式做確定性計算，AI 協助查詢與解釋。`
 
-Compressed summary:
+Compressed summary paragraph 1:
 
-Paragraph 1:
 `本專案把繪圖人員的施工範圍判斷、繪製、標註、長度計算與元件清點方式，整理成明確的圖面條件、判斷邏輯與計算規則，建立可重複使用的 AutoCAD 作業流程。`
 
-Paragraph 2:
+Compressed summary paragraph 2:
+
 `繪圖人員負責工程判斷與最終確認；程式依標準圖層、框選範圍與公司規則計算，AI 助理使用既有結果協助查詢、解釋與摘要。`
 
 Progression remains unchanged:
 
 `經驗規則化 → 作業標準化 → 知識系統化`
 
-Closing quote becomes exactly:
+Closing quote:
 
 `讓工程經驗可以保存、沿用、執行與追溯。`
 
@@ -270,7 +249,7 @@ No NEXT STEP or CTA is added.
 
 ## Navigation copy
 
-Navigation structure and brand remain unchanged. The six `navItems` labels become exactly:
+Navigation structure and brand remain unchanged. Current recommended `navItems` labels are:
 
 - `提案概要`
 - `目前流程`
@@ -295,7 +274,7 @@ Hard rules:
 
 Implementation must follow RED → GREEN.
 
-RED contract will assert the six recommended titles/copy and will fail against the untouched base.
+RED contract will assert the approved six-title/copy contract and fail against the untouched base.
 
 GREEN verification must include:
 
