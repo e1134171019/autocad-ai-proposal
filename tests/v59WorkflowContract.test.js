@@ -11,6 +11,27 @@ describe('v5.9 工作流程契約', () => {
     expect(currentFlowNodes.map((step) => step.animType)).toContain('manual-label-slow');
     expect(currentFlowNodes.some((step) => step.selection)).toBe(false);
   });
+  it('ACT 02 保留既有動畫順序，但改用客戶導向文案與三階段資訊', () => {
+    const act02 = read('src/lib/components/Act02Flow.svelte');
+    const process = read('src/lib/components/CadProcess.svelte');
+    expect(currentFlowNodes.map((step) => step.animType)).toEqual([
+      'static',
+      'static-sheets',
+      'static-zones',
+      'draw',
+      'manual-inspect',
+      'manual-label-slow',
+      'sum',
+      'quantity-slow',
+      'adjust'
+    ]);
+    expect(act02).toContain('act02ProcessSteps');
+    expect(act02).toContain('currentFlowStages');
+    expect(act02).toContain('act02Content.title');
+    expect(process).toContain('processStages = []');
+    expect(process).toContain('activeStage');
+    expect(process).toContain('stage-context');
+  });
   it('STEP 02 建立四個標準圖層', () => {
     const step = futureFlowSteps[1];
     expect(step.animType).toBe('standard-layers');
@@ -47,4 +68,3 @@ describe('v5.9 工作流程契約', () => {
     expect(read('src/lib/components/Act03Problem.svelte')).not.toContain('keyword-ai');
   });
 });
-
