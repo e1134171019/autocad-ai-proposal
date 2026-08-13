@@ -34,7 +34,7 @@ describe('proposal copy cleanup contract', () => {
   });
 
   it('模糊流程句改成具體行為', () => {
-    expect(heroContent.sections[3].paragraphs).toContain('目前的作業流程從原始 CAD 圖面開始。');
+    expect(heroContent.scopeNote.desc).toContain('6 樓外部施工範圍');
     expect(futureFlowSteps.find((step) => step.id === 6)?.desc).not.toContain('進行作業');
     expect(futureFlowSteps.find((step) => step.id === 7)?.label).toBe('框選範圍定義本次計算區域');
     expect(futureFlowSteps.find((step) => step.id === 7)?.desc).not.toContain('進行分類');
