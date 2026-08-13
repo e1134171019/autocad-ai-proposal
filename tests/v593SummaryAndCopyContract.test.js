@@ -36,12 +36,16 @@ describe('v5.9.3 專案總結與 ACT 04 文案契約', () => {
     expect(`${step06.label} ${step06.desc}`).toContain('外掛');
   });
 
-  it('ACT 06 使用專案總結並完全移除舊 NEXT STEP CTA', () => {
+  it('ACT 06 保留專案總結、工程責任與無 CTA 邊界', () => {
     const summary = read('src/lib/components/Act06Summary.svelte');
     expect(summary).toContain('ACT 06 / PROJECT SUMMARY');
-    expect(summary).toContain('工程經驗');
-    expect(summary).toContain('規則化、標準化與系統化');
-    expect(summary).toContain('把繪圖人員的工程經驗，轉成公司可以保存、團隊可以沿用、程式可以執行、AI 可以使用的標準作業系統。');
+    expect(summary).toContain('專案效益與預期成果');
+    expect(summary).toContain('實際節省的工時與改善幅度目前沒有量測數據');
+    expect(summary).toContain('繪圖人員負責工程判斷與最終確認');
+    expect(summary).toContain('經驗規則化');
+    expect(summary).toContain('作業標準化');
+    expect(summary).toContain('知識系統化');
+    expect(summary).toContain('將繪圖人員的工程經驗整理成公司可以保存、團隊可以沿用、程式可以執行的作業規則。');
     expect(summary).not.toContain('NEXT STEP');
     expect(summary).not.toContain('準備好從一張代表性施工圖開始了嗎？');
     expect(summary).not.toContain('重新檢視現況流程');
