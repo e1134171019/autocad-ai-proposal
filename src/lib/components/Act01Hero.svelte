@@ -5,12 +5,12 @@
   import { heroContent } from '$lib/content/siteContent.js';
 
   const proposalOutline = Object.freeze([
-    { id: '01', href: '#act-01', title: '客戶需求', desc: '說明這次要處理的 AutoCAD 長度與數量驗算需求。' },
-    { id: '02', href: '#act-02', title: '目前流程', desc: '從施工範圍判斷、畫線，到人工查看、記錄與加總。' },
-    { id: '03', href: '#act-03', title: '流程差異', desc: '比較人工流程與外掛流程的作業步驟；畫面不代表實測工時。' },
-    { id: '04', href: '#act-04', title: '系統方案', desc: '展示外掛工具列、標準圖層、框選範圍與結果介面。' },
-    { id: '05', href: '#act-05', title: '判斷規則', desc: '說明系統如何依圖面、施工範圍、標準圖層與公司規則整理結果。' },
-    { id: '06', href: '#act-06', title: '專案總結', desc: '整理這套工具最後要留下的規則、結果與作業方式。' }
+    { id: '01', href: '#act-01', title: '我們的提案', desc: '說明這次要處理的 AutoCAD 驗算工作。' },
+    { id: '02', href: '#act-02', title: '目前客戶的流程', desc: '呈現目前施工圖從判斷、繪製到加總的作業。' },
+    { id: '03', href: '#act-03', title: '目前流程的問題', desc: '整理人工流程中的重複操作與作業風險。' },
+    { id: '04', href: '#act-04', title: '我們的解決方案', desc: '呈現外掛在 AutoCAD 裡的預計操作方式。' },
+    { id: '05', href: '#act-05', title: '計算方式與 AI', desc: '說明結果怎麼算，以及 AI 助理負責什麼。' },
+    { id: '06', href: '#act-06', title: '預期成果', desc: '整理方案預期改善的作業內容與可重複規則。' }
   ]);
 </script>
 
@@ -18,8 +18,8 @@
   <div class="section-inner">
     <header class="hero-intro">
       <p class="eyebrow">AUTOCAD WORKFLOW PROPOSAL</p>
-      <h1>AutoCAD 施工圖長度與數量自動驗算</h1>
-      <p class="hero-lead">保留繪圖人員的工程判斷，把逐段查看長度、人工加總與數量清點交給外掛處理。</p>
+      <h1>我們的提案</h1>
+      <p class="hero-lead">將客戶現有的 AutoCAD 施工圖作業加入外掛工具，協助整理施工線長度、施工總長與元件數量。繪圖人員仍負責施工位置判斷與繪製；程式負責計算，AI 助理負責結果查詢、解釋與摘要。</p>
 
       <div class="workflow-compare" aria-label="目前流程與導入外掛後流程比較">
         <div class="workflow-row current">
@@ -28,14 +28,14 @@
         </div>
         <div class="workflow-row proposed">
           <span class="workflow-label">導入外掛</span>
-          <strong>繪圖 → 框選施工範圍 → 系統整理長度與數量 → 人員確認</strong>
+          <strong>繪圖 → 框選施工範圍 → 程式整理長度與數量 → AI 助理查詢 → 人員確認</strong>
         </div>
       </div>
 
       <div class="problem-bridge">
-        <p class="problem-label">真正難點</p>
-        <h2>真正的問題不是把數字加起來，而是先確認這一次哪些物件應該算。</h2>
-        <p>同一張 DWG 可能同時有不同樓層、施工區域、版本與參考物件；先界定本次範圍，後面的長度與數量才有一致的計算基準。</p>
+        <p class="problem-label">計算前提</p>
+        <h2>先確認本次要計算的樓層、區域與物件。</h2>
+        <p>同一個 DWG 可能包含不同樓層、施工區域、版本與參考物件。範圍與圖層先界定清楚，後續長度與數量才有一致的計算基準。</p>
       </div>
     </header>
 
