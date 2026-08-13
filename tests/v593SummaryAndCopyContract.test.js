@@ -40,7 +40,7 @@ describe('v5.9.3 專案總結與 ACT 04 文案契約', () => {
     const summary = read('src/lib/components/Act06Summary.svelte');
     expect(summary).toContain('ACT 06 / PROJECT SUMMARY');
     expect(summary).toContain('專案效益與預期成果');
-    expect(summary).toContain('實際節省的工時與改善幅度目前沒有量測數據');
+    expect(summary).toContain('目前沒有工時與改善幅度的前後量測數據');
     expect(summary).toContain('繪圖人員負責工程判斷與最終確認');
     expect(summary).toContain('經驗規則化');
     expect(summary).toContain('作業標準化');
