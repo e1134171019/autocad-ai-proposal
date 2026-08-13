@@ -27,8 +27,8 @@
 <section id="act-05" class="section section-weight-l intelligence">
   <div class="section-inner">
     <p class="eyebrow">ACT 05 / CALCULATION & RESULT TRACEABILITY</p>
-    <h2 class="section-title">計算依據與結果確認</h2>
-    <p class="section-lead">框選範圍與標準圖層先界定本次計算內容，C# 規則引擎依 CAD 物件與公司規則產生長度、數量與忽略原因；AI 助理只查詢、解釋與摘要這些已計算結果。</p>
+    <h2 class="section-title">系統計算方式與 AI 分工</h2>
+    <p class="section-lead">框選範圍與標準圖層先決定本次哪些物件需要計算。C# 規則引擎負責篩選、分類、長度與數量計算，並保留未計入物件的原因；AI 助理只使用已完成的計算結果進行查詢、解釋與摘要，最後仍由人員確認。</p>
 
     <div class="intelligence-layout">
       <div class="responsibilities">
