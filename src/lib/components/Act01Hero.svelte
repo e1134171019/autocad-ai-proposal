@@ -61,7 +61,7 @@
 
     <div class="hero-intro">
       <p class="eyebrow">ACT 01 / PROJECT CONTEXT</p>
-      <h1>客戶需求、目標、難點與現況入口</h1>
+      <h1>{heroContent.title}</h1>
       <div class="context-line"><span class="status-dot"></span>先說清楚客戶要什麼，再走進目前的 CAD 作業</div>
     </div>
 
