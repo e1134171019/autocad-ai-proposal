@@ -1,19 +1,19 @@
-<!-- 職責：呈現九個現況 CAD 作業流程節點與完整框選動作。 -->
-<!-- 輸入：currentFlowNodes 與共用 CadProcess。 -->
+<!-- 職責：呈現九個現況 CAD 作業流程節點，沿用既有動畫並加入客戶導向文案與三階段閱讀資訊。 -->
+<!-- 輸入：act02ProcessSteps、currentFlowStages 與共用 CadProcess。 -->
 <!-- 輸出：ACT 02 現況流程互動。 -->
 <script>
   import CadProcess from './CadProcess.svelte';
-  import { currentFlowNodes } from '$lib/content/siteContent.js';
+  import { act02Content, act02ProcessSteps, currentFlowStages } from '$lib/content/act02CurrentWorkflow.js';
 </script>
 
 <section id="act-02" class="section flow">
   <div class="section-inner-wide">
     <CadProcess
-      eyebrow="ACT 02 / CURRENT MANUAL WORKFLOW"
-      title="目前貴司工作流程"
-      lead="我們先模擬貴公司目前的施工圖作業流程，看看一張圖面從判斷施工範圍、畫線、標註，到長度加總與數量換算，是怎麼完成的。"
-      leadHighlights={[{ text: '施工圖作業流程', tone: 'manual' }, { text: '長度加總', tone: 'manual' }, { text: '數量換算', tone: 'manual' }]}
-      processSteps={currentFlowNodes}
+      eyebrow={act02Content.eyebrow}
+      title={act02Content.title}
+      lead={act02Content.lead}
+      processSteps={act02ProcessSteps}
+      processStages={currentFlowStages}
       mode="current"
     />
   </div>
