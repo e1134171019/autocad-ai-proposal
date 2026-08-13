@@ -3,7 +3,7 @@
 <!-- 輸出：ACT 02 現況流程互動。 -->
 <script>
   import CadProcess from './CadProcess.svelte';
-  import { act02Content, act02ProcessSteps, currentFlowStages } from '$lib/content/act02CurrentWorkflow.js';
+  import { act02Content, act02ProcessSteps, currentFlowStages } from '$lib/content/act02CurrentWorkflowV2.js';
 </script>
 
 <section id="act-02" class="section flow">
