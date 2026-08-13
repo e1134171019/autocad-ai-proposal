@@ -70,7 +70,7 @@ assert.ok(futureFlowSteps[3].desc.includes('AI 不代替繪圖'));
 assert.ok(futureFlowSteps[3].desc.includes('自動讀取物件長度並帶入尺寸標註'));
 assert.ok(summary.includes('ACT 06 / PROJECT SUMMARY'));
 assert.ok(summary.includes('專案效益與預期成果'));
-assert.ok(summary.includes('目前沒有工時與改善幅度的前後量測數據'));
+assert.ok(summary.includes('目前沒有工時的前後量測數據'));
 assert.ok(summary.includes('經驗規則化'));
 assert.ok(summary.includes('作業標準化'));
 assert.ok(summary.includes('知識系統化'));
