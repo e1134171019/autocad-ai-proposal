@@ -10,9 +10,9 @@
   <div class="section-inner-wide">
     <CadProcess
       eyebrow="ACT 02 / CURRENT MANUAL WORKFLOW"
-      title="目前貴司工作流程"
-      lead="我們先模擬貴公司目前的施工圖作業流程，看看一張圖面從判斷施工範圍、畫線、標註，到長度加總與數量換算，是怎麼完成的。"
-      leadHighlights={[{ text: '施工圖作業流程', tone: 'manual' }, { text: '長度加總', tone: 'manual' }, { text: '數量換算', tone: 'manual' }]}
+      title="目前客戶的流程"
+      lead="客戶目前從原始 CAD 圖面開始，由繪圖人員判斷施工範圍、繪製線段或聚合線，再逐段查看長度、建立標註、人工加總並換算施工數量。最後還需要整理線條、文字、尺寸與圖面位置。"
+      leadHighlights={[{ text: '施工範圍', tone: 'manual' }, { text: '逐段查看長度', tone: 'manual' }, { text: '人工加總', tone: 'manual' }, { text: '換算施工數量', tone: 'manual' }]}
       processSteps={currentFlowNodes}
       mode="current"
     />
